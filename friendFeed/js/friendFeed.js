@@ -43,6 +43,14 @@
     };
   })();
 
+  var initializeFriendFeed = function() {
+    $('#notice').empty();
+    $('#you').empty()
+      .append('<div id="userInfo">Logged in as: '
+          + R.currentUser.get('vanityName')
+          + '</div>');
+  };
+
   window.rdioFriendFeed = {
     noConflict: oldFriendHistory,
 
@@ -52,6 +60,7 @@
       var logStr = "Viewing as " + user + " ";
       if (R.authenticated()) {
         log(logStr + "and also authenticated");
+        initializeFriendFeed();
       } else {
         log(logStr + "but not authenticated");
         showLogin();
