@@ -66,9 +66,6 @@
         showLogin();
       }
     },
-
-    onPubSub: function() {
-    },
   }
 
   R.ready(rdioFriendFeed.onRdioReady);
