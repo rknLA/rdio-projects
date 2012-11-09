@@ -1,11 +1,17 @@
 /*globals R, $ */
 (function() {
+  //noConflict
   var oldFriendHistory = window.rdioFriendFeed;
 
+  /* FriendFeed log! */
   var log = function(text) {
     console.log("[FriendFeed] " + text);
   };
 
+
+  /* This handles the login flow inside a closure.
+   * Cause closures are fun.
+   * */
   var showLogin = (function() {
     var loginShowing = false;
 
