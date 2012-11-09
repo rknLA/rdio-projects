@@ -1,11 +1,22 @@
 // Static content server.
 // copied from https://gist.github.com/701407
+//
+// modified with mime types from http://stackoverflow.com/questions/7268033/basic-static-file-server-in-nodejs
 
 var http = require("http"),
   url = require("url"),
   path = require("path"),
   fs = require("fs")
   port = process.argv[2] || 8888;
+
+var mimeTypes = {
+  "html": "text/html",
+  "jpeg": "image/jpeg",
+  "jpg": "image/jpeg",
+  "png": "image/png",
+  "js": "text/javascript",
+  "css": "text/css"
+};
 
 http.createServer(function(request, response) {
   var uri = url.parse(request.url).pathname
@@ -29,7 +40,8 @@ http.createServer(function(request, response) {
         return;
       }
 
-      response.writeHead(200);
+      var mimeType = mimeTypes[path.extname(filename).split(".")[1]];
+      response.writeHead(200, mimeType);
       response.write(file, "binary");
       response.end();
     });
