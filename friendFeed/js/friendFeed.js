@@ -1,4 +1,4 @@
-/*globals R, $ */
+/*globals R, $, Handlebars */
 (function() {
   //noConflict
   var oldFriendHistory = window.rdioFriendFeed;
@@ -45,10 +45,14 @@
 
   var initializeFriendFeed = function() {
     $('#notice').empty();
+    var source = $('#userIdentityTemplate').html();
+    var template = Handlebars.compile(source);
+    var currentUserInfo = template({
+      avatarUrl: R.currentUser.get('icon'),
+      userName: R.currentUser.get('vanityName')
+    });
     $('#you').empty()
-      .append('<div id="userInfo">Logged in as: '
-          + R.currentUser.get('vanityName')
-          + '</div>');
+      .append(currentUserInfo);
   };
 
   window.rdioFriendFeed = {
