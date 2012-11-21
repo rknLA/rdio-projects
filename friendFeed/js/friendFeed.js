@@ -27,6 +27,8 @@
         log("authentication successful!");
       } else {
         log("authentication failed");
+        $('#authenticationButton').html('Authenticate')
+          .removeAttr('disabled');
       }
     };
 
