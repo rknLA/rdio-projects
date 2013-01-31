@@ -40,7 +40,7 @@
   };
 
   Replaylist.renderForm = function() {
-    var ui = $($('section.ui')[0]);
+    var ui = $('section.ui :first');
 
     var source = $('#playlistSearchTemplate').html();
     ui.empty().append(Handlebars.compile(source)());
@@ -48,13 +48,26 @@
   };
 
   Replaylist.renderPlaylist = function(playlist) {
-    var playlistSection = $(document.querySelector('[data-r-source-playlist]'));
+    var playlistSection = $('section.sourcePlaylist :first');
+
     if (playlist === undefined) {
       playlistSection.empty();
       return;
     }
-
     console.log(playlist);
 
+    var playlistSource = $('#playlistTemplate').html();
+    var playlistTemplate = Handlebars.compile(playlistSource);
+    var playlistContents = playlistTemplate(playlist);
+    playlistSection.empty().append(playlistContents);
+
+    var playlistOL = $('.playlist-tracks :first').children('ol');
+
+    var trackSource = $('#playlistTrackTemplate').html();
+    var trackTemplate = Handlebars.compile(trackSource);
+    $.each(playlist.tracks, function(i, track) {
+      console.log(i, track);
+      playlistOL.append(trackTemplate(track));
+    });
   };
 })();

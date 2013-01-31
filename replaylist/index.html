@@ -16,7 +16,7 @@
   <script src="https://www.rdio.com/api/api.js?helper=helper.html&client_id=K2EZjror-PUABG21Cek3bA"></script>
 
   <script src="js/main.js"></script>
-  <script src="js/rdio-tools.js"></script>
+  <script src="../shared/js/rdio-tools.js"></script>
   <script src="js/replaylist.js"></script>
 
   <script id="authTemplate" type="text/x-handlebars-template">
@@ -38,9 +38,15 @@
 
   <script id="playlistTemplate" type="text/x-handlebars-template">
     <div class="playlist-metadata">
-      <span class="playlist-name">{{playlistName}}</span>
-      by
-      <span class="playlist-owner">{{owner}}</span>
+      <p>
+        <span class="playlist-name">{{name}}</span>
+        by
+        <span class="playlist-owner">{{owner}}</span>
+      </p>
+      <p>
+        <span class="playlist-track-count">{{length}}</span>
+        Tracks
+      </p>
     </div>
     <div class="playlist-tracks">
       <ol>
@@ -48,6 +54,11 @@
     </div>
   </script>
 
+  <script id="playlistTrackTemplate" type="text/x-handlebars-template">
+    <li>
+    {{name}} - {{artist}} ({{album}}) {{duration}}
+    </li>
+  </script>
 
 </head>
 
@@ -62,7 +73,7 @@
   Also put the clone and save buttons here.
   </section>
 
-  <section data-r-source-playlist>
+  <section class="sourcePlaylist">
   Render the playlist here.
   </section>
 
