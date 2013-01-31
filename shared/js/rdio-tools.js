@@ -56,7 +56,7 @@
         var authenticationComplete = function(success) {
           if (success) {
             console.log("authentication successful!");
-            self.renderUser(authSectionElement, successCallback);
+            RdioTools.authentication.renderUser(authSectionElement, successCallback);
           } else {
             console.log("authentication failed");
             authButton.html('Authenticate').removeAttr('disabled');
