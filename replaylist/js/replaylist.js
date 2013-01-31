@@ -1,6 +1,8 @@
 /*globals R, $, Replaylist */
 (function()  {
 
+  Replaylist.currentPlaylist = null;
+
   Replaylist.onAuthenticated = function() {
     console.log('authentication!');
 
@@ -20,7 +22,7 @@
       method: 'getObjectFromUrl',
       content: {
         url: query,
-        extras: 'tracks'
+        extras: 'description,tracks'
       },
       success: function(res) {
         console.log('got an object from rdio!');
@@ -34,6 +36,38 @@
       },
       error: function(res) {
         console.log('error getting object from url');
+        console.log(res);
+      }
+    });
+  };
+
+  Replaylist.handleCloneClicked = function(e) {
+    console.log('clone clicked!');
+
+    // mostly just for shorthand.
+    var pl = Replaylist.currentPlaylist;
+    var trackKeysArray = [];
+
+    $.each(pl.tracks, function(ix, track) {
+      trackKeysArray[ix] = track.key;
+    });
+    var tracksKeys = trackKeysArray.join(',');
+
+    R.request({
+      method: 'createPlaylist',
+      content: {
+        name: pl.name,
+        description: pl.description,
+        tracks: tracksKeys
+      },
+      success: function(res) {
+        console.log('playlist cloned!');
+
+        Replaylist.renderPlaylist();
+        $('#playlist_search_input').val('');
+      },
+      error: function(res) {
+        console.log('error cloning playlist');
         console.log(res);
       }
     });
@@ -56,10 +90,14 @@
     }
     console.log(playlist);
 
+    Replaylist.currentPlaylist = playlist;
+
     var playlistSource = $('#playlistTemplate').html();
     var playlistTemplate = Handlebars.compile(playlistSource);
     var playlistContents = playlistTemplate(playlist);
     playlistSection.empty().append(playlistContents);
+
+    $('#clone_playlist').click(Replaylist.handleCloneClicked);
 
     var playlistOL = $('.playlist-tracks :first').children('ol');
 
