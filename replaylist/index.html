@@ -36,11 +36,18 @@
     </form>
   </script>
 
-  <script id="songEntryTemplate" type="text/x-handlebars-template">
-    <li class="song">
-      <span class="title">"{{title}}"</span> - <span class="artist">{{artist}}</span>
-    </li>
+  <script id="playlistTemplate" type="text/x-handlebars-template">
+    <div class="playlist-metadata">
+      <span class="playlist-name">{{playlistName}}</span>
+      by
+      <span class="playlist-owner">{{owner}}</span>
+    </div>
+    <div class="playlist-tracks">
+      <ol>
+      </ol>
+    </div>
   </script>
+
 
 </head>
 
