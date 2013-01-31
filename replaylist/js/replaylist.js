@@ -5,7 +5,7 @@
     console.log('authentication!');
 
     Replaylist.renderForm();
-    Replaylist.renderSearchResults();
+    Replaylist.renderPlaylist();
   };
 
   Replaylist.handleSearchEvent = function(e) {
@@ -27,7 +27,7 @@
         console.log(res);
         var urlType = res.result.type;
         if (urlType == 'p') {
-          Replaylist.renderSearchResults(res.result.tracks);
+          Replaylist.renderPlaylist(res.result);
         } else {
           console.error('You submitted a url that\'s not a playlist');
         }
@@ -47,14 +47,14 @@
     $('#playlist_search_button').click(Replaylist.handleSearchEvent);
   };
 
-  Replaylist.renderSearchResults = function(results) {
+  Replaylist.renderPlaylist = function(playlist) {
     var playlistSection = $(document.querySelector('[data-r-source-playlist]'));
-    if (results === undefined) {
+    if (playlist === undefined) {
       playlistSection.empty();
       return;
     }
 
-    console.log(results);
+    console.log(playlist);
 
   };
 })();
