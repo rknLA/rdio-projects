@@ -8,7 +8,7 @@
     no_conflict: _nc,
     onRdioReady: function() {
       self = window.Replaylist;
-      RC.authentication.init(self.onAuthenticated);
+      RdioTools.authentication.init(self.onAuthenticated);
     }
   };
 

@@ -16,7 +16,7 @@
   <script src="https://www.rdio.com/api/api.js?helper=helper.html&client_id=K2EZjror-PUABG21Cek3bA"></script>
 
   <script src="js/main.js"></script>
-  <script src="js/rdio-client.js"></script>
+  <script src="js/rdio-tools.js"></script>
   <script src="js/replaylist.js"></script>
 
   <script id="authTemplate" type="text/x-handlebars-template">
@@ -26,6 +26,14 @@
     <div id="userInfo">Logged in as:
       <span class="userId">{{userName}}</span>
     </div>
+  </script>
+
+  <script id="playlistSearchTemplate" type="text/x-handlebars-template">
+    <form>
+      <label for="playlist_url">Enter URL for playlist here:</label>
+      <input type="text" name="playlist_url" id="playlist_search_input"></input>
+      <button id="playlist_search_button">Search!</button>
+    </form>
   </script>
 
   <script id="songEntryTemplate" type="text/x-handlebars-template">
