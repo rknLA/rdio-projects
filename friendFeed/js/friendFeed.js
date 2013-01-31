@@ -25,6 +25,7 @@
     var authenticationComplete = function(success) {
       if (success) {
         log("authentication successful!");
+        initializeFriendFeed();
       } else {
         log("authentication failed");
         $('#authenticationButton').html('Authenticate')

@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Rdio Station Voter</title>
+
+    <link rel="stylesheet" type="text/css" href="style/main.css" />
+
+    <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.rc.1/handlebars.min.js"></script>
+    <!--
+    <script src="http://rdio.com/api/api.js?helper=helper.html&client_id=41tOCptmJ8EmB29wVkWNOw"></script>
+    -->
+    <script src="http://rdio.localhost:8000/api/api.js?helper=helper.html&client_id=bq881iY6dWnBp1juE6oJUg"></script>
+    <script src="js/voter.js" type="text/javascript"></script>
+  </head>
+
+  <script id="userIdentityTemplate" type="text/x-handlebars-template">
+    <div id="avatar">
+      <img src="{{avatarUrl}}" width="50" height="50" />
+    </div>
+    <div id="userInfo">Logged in as:
+      <span class="userId">{{userName}}</span>
+    </div>
+  </script>
+
+  <body>
+
+    <header>
+      <h1>Rdio Station voter</h1>
+    </header>
+
+    <div class="loading">
+      Rdio is loading...
+    </div>
+
+    <div id="you">
+    </div>
+
+    <div id="player-info" class="hidden">
+      <div id="playstate">Unknown</div>
+      <div id="current-track">
+        "<span class="track-name"></span>" - 
+        <span class="artist"></span> 
+        (<span class="album"></span>)
+        <br />
+        <span class="elapsed-time"></span>
+      </div>
+    </div>
+
+    <div id="controls" class="hidden">
+      <div id="control-notes"></div>
+      <button id="killdoze">Skip</button>
+      <button id="downvote">DOWN</button>
+      <button id="upboat">UP</button>
+      <div id="vote-results"></div>
+    </div>
+
+
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-37837687-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+  </body>
+</html>

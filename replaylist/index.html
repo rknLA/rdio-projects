@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>JS API App Template</title>
+
+  <link rel="stylesheet" href="css/main.css" media="screen" />
+
+  <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.rc.1/handlebars.min.js"></script>
+  <!-- rdio localhost
+  <script src="http://rdio.localhost:8000/api/api.js?helper=helper.html&client_id=CLIENT_ID"></script>
+  -->
+  <!-- rdio.com
+  -->
+  <script src="https://www.rdio.com/api/api.js?helper=helper.html&client_id=K2EZjror-PUABG21Cek3bA"></script>
+
+  <script src="js/main.js"></script>
+  <script src="js/rdio-client.js"></script>
+  <script src="js/replaylist.js"></script>
+
+  <script id="authTemplate" type="text/x-handlebars-template">
+    <div id="avatar">
+      <img src="{{avatarUrl}}" width="50" height="50" />
+    </div>
+    <div id="userInfo">Logged in as:
+      <span class="userId">{{userName}}</span>
+    </div>
+  </script>
+
+  <script id="songEntryTemplate" type="text/x-handlebars-template">
+    <li class="song">
+      <span class="title">"{{title}}"</span> - <span class="artist">{{artist}}</span>
+    </li>
+  </script>
+
+</head>
+
+<body>
+  <section data-r-auth="userBadge">
+  Rdio Authentication Section
+  </section>
+
+  <section class="ui">
+  Put a form for source playlist here.
+
+  Also put the clone and save buttons here.
+  </section>
+
+  <section data-r-source-playlist>
+  Render the playlist here.
+  </section>
+
+
+</body>
+</html>
