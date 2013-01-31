@@ -65,10 +65,16 @@
 
         Replaylist.renderPlaylist();
         $('#playlist_search_input').val('');
+
+        var text = '<h3>Cloned successfuly!</h3>';
+        $('.clone-results :first').html(text).fadeIn(200).fadeOut(3000);
       },
       error: function(res) {
         console.log('error cloning playlist');
         console.log(res);
+        var text = "Error! ";
+        text += res.message;
+        $('.clone-results :first').html(text).show(400);
       }
     });
   };
@@ -79,6 +85,7 @@
     var source = $('#playlistSearchTemplate').html();
     ui.empty().append(Handlebars.compile(source)());
     $('#playlist_search_button').click(Replaylist.handleSearchEvent);
+    $('.clone-results :first').fadeOut();
   };
 
   Replaylist.renderPlaylist = function(playlist) {
