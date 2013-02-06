@@ -29,9 +29,8 @@ else:
 print "current branch is now %s" % repo.head.ref.name
 
 
-print "git checkout gh-pages"
-
 print "merge master"
+import pdb; pdb.set_trace()
 
 print "compile sass shit"
 
