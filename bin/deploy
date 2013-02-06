@@ -4,6 +4,8 @@ def bail(message):
   print message
   quit()
 
+print "checking for GitPython"
+
 try:
   from git import *
 except ImportError:
@@ -11,10 +13,15 @@ except ImportError:
 
 repo = Repo('.')
 
+print "making sure repo is clean"
 if repo.is_dirty():
   bail("You have changes in your working directory.\nMake sure your repo is clean before deploying.")
 
-print "check for gh-pages branch"
+print "checking for gh-pages branch"
+if not 'gh-pages' in [branch.name for branch in repo.heads]:
+  print "gh-pages branch doesn't exist yet. creating it."
+else:
+  print "gh-pages branch exists."
 
 print "git checkout gh-pages"
 
