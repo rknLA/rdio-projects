@@ -1,0 +1,22 @@
+#!/usr/bin/env python
+
+try:
+  from git import *
+except ImportError:
+  print "Deployment Error: GitPython is not installed."
+  quit()
+
+print "check for gh-pages branch"
+
+print "git checkout gh-pages"
+
+print "merge master"
+
+print "compile sass shit"
+
+print "commit the pages repo"
+
+print "push origin"
+
+print "checkout master"
+
