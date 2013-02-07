@@ -1,6 +1,13 @@
 Rdio Projects
 -------------
 
+### Notice!
+
+This repo is not done yet, so while everything said below is nice and fluffy,
+none of it actually works yet!
+
+---
+
 A little framework for building client-side apps that use the Rdio API.
 
 The framework's purpose is to maximize code reusability, and to shorten the
