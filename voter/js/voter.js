@@ -154,11 +154,16 @@
       $('#upboat').on('click', handleVote('Favorite'));
       enableControls();
 
+      $('#station .name').text(newValue.get('name'));
+
       $('.adventurousness').on('change', 'input', function(event) {
         var val = $(event.target).val();
       });
 
       $('#controls').removeClass('hidden');
+      $('#station').removeClass('hidden');
+    } else {
+      $('#station').addClass('hidden');      
     }
   };
 
