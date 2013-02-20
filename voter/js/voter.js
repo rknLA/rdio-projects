@@ -133,6 +133,7 @@
     $('#killdoze').off();
     $('#downvote').off();
     $('#upboat').off();
+    $('.adventurousness').off();
 
     var newSourceType;
     if (newValue && newValue.get && typeof(newValue.get) === 'function') {
@@ -152,6 +153,10 @@
       $('#downvote').on('click', handleVote('Ban'));
       $('#upboat').on('click', handleVote('Favorite'));
       enableControls();
+
+      $('.adventurousness').on('change', 'input', function(event) {
+        var val = $(event.target).val();
+      });
 
       $('#controls').removeClass('hidden');
     }
