@@ -113,7 +113,7 @@
         success: function (response) {
           console.log(response);
           $('#vote-results').empty().append('Voted!');
-          if (vote != 'Favorite') {
+          if (vote != 'favorite') {
             R.player.next();
           }
         },
@@ -148,9 +148,9 @@
       // this is a bit redundant right now, since .get is only available on these types...
 
       // source is an echonest station, and can be voted.
-      $('#killdoze').on('click', handleVote('Skip'));
-      $('#downvote').on('click', handleVote('Ban'));
-      $('#upboat').on('click', handleVote('Favorite'));
+      $('#killdoze').on('click', handleVote('skip'));
+      $('#downvote').on('click', handleVote('ban'));
+      $('#upboat').on('click', handleVote('favorite'));
       enableControls();
 
       $('#controls').removeClass('hidden');
