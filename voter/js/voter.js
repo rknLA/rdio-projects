@@ -133,6 +133,7 @@
     $('#killdoze').off();
     $('#downvote').off();
     $('#upboat').off();
+    $('.adventurousness').off();
 
     var newSourceType;
     if (newValue && newValue.get && typeof(newValue.get) === 'function') {
@@ -153,7 +154,25 @@
       $('#upboat').on('click', handleVote('favorite'));
       enableControls();
 
+      $('#station .name').text(newValue.get('name'));
+
+      var key = newValue.get('key');
+      var keyParts = key.split('|');
+      var rawKey = keyParts[0];
+      var variety = keyParts[1] || '0.5';
+      
+      $('.adventurousness input[value="' + variety + '"]')
+        .prop('checked', true);
+
+      $('.adventurousness').on('change', 'input', function(event) {
+        var val = $(event.target).val();
+        R.player.play({ source: rawKey + '|' + val });
+      });
+
       $('#controls').removeClass('hidden');
+      $('#station').removeClass('hidden');
+    } else {
+      $('#station').addClass('hidden');      
     }
   };
 
