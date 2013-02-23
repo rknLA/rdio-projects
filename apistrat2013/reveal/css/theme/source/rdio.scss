@@ -1,0 +1,187 @@
+/**
+ * Rdio theme for reveal.js.
+ * 
+ * Copyright (C) 2013 Rdio, Inc. - http://rdio.com/
+ * Written by R. Kevin Nelson
+ */
+
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+
+// Rdio font -----------------------------------
+@font-face {
+  font-family: "Whitney";
+  src: url("../../../font/Whitney-Light.otf");
+
+  font-weight: normal;
+  font-style: normal;
+}
+// ---------------------------------------------
+
+// Rdio colors ---------------------------------
+$rdio-blue: rgb(0, 112, 177);
+$rdio-blue-border: rgb(22, 135, 200);
+$dark-grey-text: rgb(91, 96, 100);
+$off-black-header: rgb(44, 48, 52);
+$off-black-text: rgb(20, 22, 25);
+$light-grey-background: rgb(205, 208, 213);
+$grey-header-for-blue-background: rgba(255,255,255,0.3);
+$rdio-border-grey: rgb(179, 179, 179);
+// ---------------------------------------------
+
+// Override theme settings
+$mainFont: 'Whitney', sans-serif;
+$mainColor: $off-black-text;
+$headingFont: 'Whitney', sans-serif;
+$headingColor: $off-black-header;
+$headingTextShadow: none;
+$headingTextTransform: none;
+$backgroundColor: #FFF;
+$linkColor: $rdio-blue;
+$linkColorHover: $dark-grey-text;
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+
+.reveal ul {
+  list-style: none;
+
+  margin-left: 0;
+
+  li {
+    margin-bottom: 0.41em;
+  }
+
+  li:before {
+    content: '•';
+    font-size: 0.6em;
+    vertical-align: top;
+    padding-right: 1em;
+  }
+}
+
+.reveal {
+  color: $off-black-text
+}
+
+.reveal .present {
+  text-align: left;
+  padding-left: 1em;
+}
+
+.chapter .reveal .state-background {
+  background-color: $rdio-blue;
+}
+
+.chapter {
+  h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+    color: white;
+    text-shadow: 0px -3px 10px rgba(0,0,0,0.5);
+  }
+}
+
+.title-slide .reveal .state-background {
+  background-color: $light-grey-background;
+  width: 100%;
+  margin-left: 0;
+  padding-left: 0;
+}
+.title-slide {
+  h1 {
+    color: $off-black-header;
+  }
+  h2, h3, h4, h5, h6 {
+    color: $dark-grey-text;
+  }
+
+  div img {
+    border-style: none;
+    box-shadow: none;
+    background: none;
+    height: 0.9em;
+    vertical-align: baseline;
+    margin-left: -1.1em;
+    margin-right: 0.2em;
+    
+  }
+}
+
+.reveal header {
+  background-color: transparent;
+  color: black;
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border-style: none none solid none;
+  border-bottom-color: $rdio-blue-border;
+  border-bottom-width: 1px;
+  margin-left: 11%;
+  padding: 0.6em 0 0.6em 0;
+  font-size: 0.8em;
+  font-weight: Light;
+}
+
+.reveal footer {
+  background-color: transparent;
+  background-image: url('../../../img/rdio-logo.png');
+  background-size: 50px 20px;
+  background-repeat: no-repeat;
+  background-position: left center;
+  color: $dark-grey-text;
+  display: block;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 89%;
+  margin-left: 11%;
+
+  border-style: solid none none none;
+  border-top-color: $rdio-border-grey;
+  border-top-width: 1px;
+  padding: 1.3em 1em 1em 0;
+  margin-bottom: 0.3em;
+
+  vertical-align: baseline;
+
+  text-transform: uppercase;
+  font-size: 0.3em;
+  text-align: right;
+}
+
+.reveal .examples-buttons {
+  display: block;
+  position: relative;
+  width: 90%;
+  margin: 15px auto;
+
+  .btn {
+    display: inline-block;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 10px;
+    padding: 0.2em 0.4em 0.2em 0.4em;
+    border-color: $rdio-border-grey;
+    color: $rdio-blue;
+  }
+
+  .btn:hover {
+    background-color: $light-grey-background;
+    cursor: pointer;
+  }
+
+  ul li:before {
+    content: '';
+    vertical-align: top;
+    padding: 0;
+    margin: 0;
+  }
+}
+
