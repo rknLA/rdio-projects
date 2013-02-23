@@ -4,7 +4,7 @@ What's new in the Rdio API
 This is the source code for my presentation from the 2013 API Strategy
 Conference in NYC on February 21, 2013.
 
-Visit [http://rknla.github.com/rdio-projects/apistrat2013/index.html](http://rknla.github.com/rdio-projects/apistrat2013/index.html#/slide-some-examples) to view the
+Visit [http://rknla.github.com/rdio-projects/apistrat2013/index.html](http://rknla.github.com/rdio-projects/apistrat2013/index.html) to view the
 presentation.
 
 Javascript Examples
