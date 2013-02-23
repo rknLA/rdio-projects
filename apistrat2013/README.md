@@ -14,6 +14,10 @@ The [JS examples slide](http://rknla.github.com/rdio-projects/apistrat2013/index
 listens for a ctrl+enter keypress to `eval` the javascript in the
 `#js-example-code` element.
 
+(Note that the console-swapper is only triggered on slide-change, so running the JS examples after
+clicking the above link will send output to the actual browser console.  To fix this, toggle the
+slides back and forth.)
+
 Aside from the `<script ...>` tag that includes Rdio and the helper.html file,
 there's no special magic here.  Load up the pages and try the examples yourself.
 
