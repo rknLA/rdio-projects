@@ -7,6 +7,8 @@ Conference in NYC on February 21, 2013.
 Visit [http://rknla.github.com/rdio-projects/apistrat2013/index.html](http://rknla.github.com/rdio-projects/apistrat2013/index.html) to view the
 presentation.
 
+The presentation has only been tested in Chrome, and is not particularly optimized for any other browsers.
+
 Javascript Examples
 ===================
 
