@@ -159,7 +159,7 @@
       var key = newValue.get('key');
       var keyParts = key.split('|');
       var rawKey = keyParts[0];
-      var variety = keyParts[1] || '0.5';
+      var variety = keyParts[1] || '3';
       
       $('.adventurousness input[value="' + variety + '"]')
         .prop('checked', true);
