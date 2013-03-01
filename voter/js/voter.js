@@ -69,6 +69,9 @@
     //kick playstateDidChange on load
     playstateDidChange(R.player.playState());
     playerSourceDidChange(R.player.playingSource());
+
+    // setup pivot button
+    $('#pivot').on('click', handlePivotPressed);
   };
 
   var playerPositionDidChange = function (newValue) {
@@ -124,6 +127,25 @@
         }
       });
     };
+  };
+
+  var handlePivotPressed = function(e) {
+    //should probably disable the button until the new station's started playing
+    var currentTrackKey = R.player.playingTrack().get('key');
+
+    console.log("pivot on track " + currentTrackKey);
+
+    // this is quick and dirty. track keys are 't' followed by an int.
+    // just remove the t and add "sr"
+    var newStationKey = 'sr' + currentTrackKey.slice(1);
+
+    // and add the adventurousness
+    var adventurousness = $('input:checked').val();
+
+    newStationKey += "|" + adventurousness;
+
+    console.log("changing playing source to " + newStationKey);
+    R.player.play({source: newStationKey});
   };
 
   var playerSourceDidChange = function(newValue) {
