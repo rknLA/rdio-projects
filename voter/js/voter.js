@@ -86,6 +86,14 @@
 
   var playerTrackDidChange = function (newValue) {
     updatePlayerInfo(newValue);
+    Keen.addEvent("trackChanged", {
+      userKey: R.currentUser.get('key'),
+      username: R.currentUser.get('vanityName'),
+      stationKey: station,
+      stationName: R.player.playingSource().get('name'),
+      trackKey: newValue.get('key'),
+      trackName: newValue.get('name')
+    });
   };
   
   var enableControls = function() {
