@@ -1,4 +1,4 @@
-/*globals R, $, Handlebars */
+/*globals R, $, Handlebars, Keen */
 (function() {
   /* log! */
   var log = function(text) {
@@ -22,6 +22,11 @@
     var authenticationComplete = function(success) {
       if (success) {
         log("authentication successful!");
+        var authLog = {
+          key: R.currentUser.get('key'),
+          username: R.currentUser.get('vanityName'),
+        };
+        Keen.addEvent("authorization", authLog);
         initializeVoter();
       } else {
         log("authentication failed");
@@ -105,6 +110,16 @@
 
       var station = R.player.playingSource().get('key');
       var track = R.player.playingTrack().get('key');
+
+      Keen.addEvent("vote", {
+        userKey: R.currentUser.get('key'),
+        username: R.currentUser.get('vanityName'),
+        stationKey: station,
+        stationName: R.player.playingSource().get('name'),
+        trackKey: track,
+        trackName: R.player.playingTrack().get('name'),
+        vote: vote
+      });
       
       R.request({
         method: "voteForTrackOnStation",
@@ -144,6 +159,16 @@
 
     newStationKey += "|" + adventurousness;
 
+    Keen.addEvent("pivot", {
+      userKey: R.currentUser.get('key'),
+      username: R.currentUser.get('vanityName'),
+      newStationKey: station,
+      oldStationKey: R.player.playingSource().get('key'),
+      oldStationName: R.player.playingSource().get('name'),
+      pivotTrackKey: track,
+      pivotTrackName: R.player.playingTrack().get('name')
+    });
+
     console.log("changing playing source to " + newStationKey);
     R.player.play({source: newStationKey});
   };
@@ -164,6 +189,15 @@
       $('#controls').addClass('hidden');
       return;
     }
+
+    Keen.addEvent("playSourceChanged", {
+      userKey: R.currentUser.get('key'),
+      username: R.currentUser.get('vanityName'),
+      newSourceName: newValue.get('name'),
+      newSourceKey: newValue.get('key'),
+      previousSourceKey: R.player.playingSource().get('key'),
+      previousSourceName: R.player.playingSource().get('name'),
+    });
 
     if (newSourceType == 'tp' ||
         newSourceType == 'rr' ||
@@ -188,6 +222,15 @@
 
       $('.adventurousness').on('change', 'input', function(event) {
         var val = $(event.target).val();
+
+        Keen.addEvent("adventurousnessEvent", {
+          userKey: R.currentUser.get('key'),
+          username: R.currentUser.get('vanityName'),
+          currentSource: R.player.playingSource().get('key'),
+          sourceKey: rawKey,
+          adventurousness: val
+        });
+
         R.player.play({ source: rawKey + '|' + val });
       });
 
