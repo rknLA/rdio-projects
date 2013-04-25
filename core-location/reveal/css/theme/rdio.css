@@ -290,3 +290,10 @@ body {
 .reveal .column.right {
   margin-left: 0.5em;
 }
+
+.reveal .triforce {
+  height: 4em;
+  border-style: none;
+  box-shadow: none;
+  background: none;
+}
