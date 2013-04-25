@@ -154,6 +154,141 @@
           </section>
         </section>
 
+        <section data-title="Two and a Half Interfaces">
+          <h3>CLLocationManagerDelegate</h3>
+          <br />
+          <p>Continuous Location Updates:</p>
+<pre><code>locationManager:didUpdateLocations:
+</pre></code>
+          <br />
+          <p>Region Monitoring:</p>
+<pre><code>locationManager:didEnterRegion:
+</pre></code>
+          <aside class="notes">
+            <ul>
+              <li>There are really two main use cases</li>
+              <li>used to be didUpdateToLocation fromLocation</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section data-title="Two and a Half Interfaces">
+          <h3>CLLocationManager</h3>
+          <br />
+          <p>Continuous Location Updates:</p>
+<pre><code>startUpdatingLocation
+</pre></code>
+<pre><code>startMonitoringForSignificantLocationChanges
+</pre></code>
+          <br />
+          <p>Region Monitoring:</p>
+<pre><code>startMonitoringForRegion:
+</pre></code>
+          <aside class="notes">
+            <ul>
+              <li>but there are three ways to get things started</li>
+              <li>this slide is sorted by delegate callback</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section data-title="Two and a Half Interfaces">
+          <h3>Underlying Technologies</h3>
+          <br />
+          <p>GPS:</p>
+<pre><code>startUpdatingLocation
+</pre></code>
+          <br />
+          <p>Cell towers:</p>
+<pre><code>startMonitoringForSignificantLocationChanges
+</pre></code>
+<pre><code>startMonitoringForRegion:
+</pre></code>
+          <aside class="notes">
+            <ul>
+              <li>This is where things start to go downhill</li>
+              <li>The triforce of efficiency works in the background, or even when terminated</li>
+              <li>this means the OS keeps a list of which applications are currently listening for significant changes</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section data-state="chapter">
+          <h1>all our base are belong to them</h1>
+        </section>
+
+        <section>
+          <section data-title="Finite Resources">
+            <blockquote>
+              Regions are a shared system resource and the total number of regions available systemwide is limited. For this reason, Core Location limits the number of regions that may be simultaneously monitored by a single app.
+            </blockquote>
+            <div>Source: <a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/LocationAwarenessPG/CoreLocation/CoreLocation.html#//apple_ref/doc/uid/TP40009497-CH2-SW15">https://.../CoreLocation.html#//apple_ref/doc/uid/TP40009497-CH2-SW15</a></div>
+
+            <aside class="notes">
+            This was both my favorite and least favorite bit of documentation for the duration of the project, and the cause of at least three headaches.
+            </aside>
+            
+          </section>
+
+          <section data-title="Excellent Documentation">
+          <blockquote>If you attempt to register a region and space is unavailable, the location manager calls the locationManager:monitoringDidFailForRegion:withError: method of its delegate with the kCLErrorRegionMonitoringFailure error code.</blockquote>
+          <div>Source: <a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/LocationAwarenessPG/CoreLocation/CoreLocation.html#//apple_ref/doc/uid/TP40009497-CH2-SW15">https://.../CoreLocation.html#//apple_ref/doc/uid/TP40009497-CH2-SW15</a></div>
+            <aside class="notes">
+            <ul>
+              <li>And actually, this is where apple actually managed to make things a little bit better.</li>
+              <li>Last April and May while I was developing the app, this was literally the only documentation on finite region monitoring capability</li>
+            </ul>
+            </aside>
+          </section>
+
+          <section data-title="Belated Clarification">
+            Finally, on 2012-09-19...
+            <blockquote>
+              An app can register up to 20 regions at a time. In order to report region changes in a timely manner, the region monitoring service requires network connectivity.
+            </blockquote>
+            <div>Source: <a href="https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/CLLocationManager/CLLocationManager.html#//apple_ref/doc/uid/TP40007125-CH3-SW19">https://.../CLLocationManager.html#//apple_ref/doc/uid/TP40007125-CH3-SW19</a></div>
+            <aside class="notes">
+            <ul>
+              <li>
+            It's worth noting that, while Apple now provides that number, there's no real way to query the manager to find out how many regions are being monitored by one app.
+              </li>
+              <li>This could be problematic if an SDK you're using also monitors for regions</li>
+              <li>The only way to find out is to try and then fail</li>
+            </ul>
+            </aside>
+          </section>
+        </section>
+
+        <section data-title="Making it useful again">
+          <h3>TODO</h3>
+          <ul>
+            <li>Write a region comparator</li>
+            <li>Find N nearest regions</li>
+            <li>Compute intersection and difference arrays</li>
+            <li>Start/stop monitoring the differences</li>
+            <li class="fragment">Use <pre><code>startMonitoringForSignificantLocationChanges</pre></code></li>
+          </ul>
+
+          <aside class="notes">
+            <ul>
+              <li>region comparator: NSComparisonResult block that calls distanceFromLocation twice</li>
+              <li>this will let you get the nearest N regions</li>
+              <li>you might also set accuracy of sig.changes to be really low to conserve battery</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section data-title="Bonus round">
+          <h3>A note on accuracy</h3>
+          <h2 class="fragment">Tell your users to enable Wifi!</h2>
+
+          <aside class="notes">
+            <ul>
+              <li>And if you can get them to actually do it, you deserve a medal</li>
+            </ul>
+          </aside>
+        </section>
+
         <section data-state="chapter">
           <h1>Any questions?</h1>
         </section>
