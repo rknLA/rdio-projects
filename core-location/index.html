@@ -53,6 +53,9 @@
             <ul>
               <li>Hi, my name is Kevin Nelson</li>
               <li>I work for a company called Rdio</li>
+              <li>before I worked at Rdio...</li>
+              <li>had some experience with core location</li>
+              <li>for context i want to tell you a bit about the project</li>
             </ul>
           </aside>
         </section>
@@ -62,35 +65,93 @@
           <h1>The Project</h1>
         </section>
 
-        <section data-title="Made in LA Soundmap">
-          <div>
-            <img src="img/soundmap.jpg" alt="Made in LA Soundmap screenshot" width="33%" class="column"/>
-            <ul class="column right">
-              <li>Geo-triggered audio</li>
-              <li>Approx 80 "hotspots" around LA</li>
-              <li>Median radius of 50 meters</li>
-            </ul>
-          </div>
-
-          <aside class="notes">
-          </aside>
-        </section>
-
         <section>
-          <section data-title="Current API Offerings">
-            <p>"The Basics"</p>
+          <section data-title="Made in LA Soundmap">
+            <div>
+              <img src="img/soundmap.jpg" alt="Made in LA Soundmap screenshot" width="33%" class="column"/>
+              <ul class="column right">
+                <li>Geo-triggered audio</li>
+                <li>Approx 80 "hotspots" around LA</li>
+                <li>Median radius of 50 meters</li>
+              </ul>
+            </div>
+
+            <aside class="notes">
+              <ul>
+                <li>Contract for a museum exhibit across 3 venues in LA</li>
+                <li>encourage public engagement by facilitating a geo-relevant audio experience</li>
+                <li>listen to a playlist, travel around LA</li>
+              </ul>
+            </aside>
+          </section>
+
+          <section data-title="Experiment">
             <ul>
-              <li>Music streaming</li>
-              <li>Web Services (metadata)</li>
+              <li>Geo-triggered audio in your browser</li>
+              <li><a href="https://github.com/rknLA/geo-audio-map">https://github.com/rknLA/geo-audio-map</a></li>
             </ul>
 
             <aside class="notes">
-              Our API lets developers access most of our features with ease.
-              <br />
-              We support integrating playback, manipulating playlists and collections, and accessing our social graph.
-              <br />
+              <ul>
+                <li>No project planning stage is complete with out an experiment</li>
+                <li>Mobile safari</li>
+              </ul>
             </aside>
           </section>
+        </section>
+
+        <section data-state="chapter">
+          <h1>The Triforce</h1>
+          <h3>The three technologies that drive Core Location<h3>
+        </section>
+
+        <section>
+          <section data-title="Cell Tower Positioning">
+            <h2>The Triforce of Efficiency</h2>
+            <br />
+            <p>Core Location gets your whereabouts using cell-tower triangulation</p>
+
+            <aside class="notes">
+              <ul>
+                <li>Uses cell-tower triangulation to find you</li>
+                <li>Most battery efficient</li>
+                <li>Lowest latency</li>
+                <li>Least accurate</li>
+              </ul>
+            </aside>
+          </section>
+
+          <section data-title="GPS Positioning">
+            <h2>The Triforce of Accuracy</h2>
+            <br />
+            <p>Core Location gets your whereabouts using GPS satellites</p>
+
+            <aside class="notes">
+              <ul>
+                <li>Turns on a dedicated GPS hardware module to find you</li>
+                <li>Most accurate</li>
+                <li>Takes some time</li>
+                <li>Gobbles battery</li>
+                <li>Succeptible to tunnels</li>
+              </ul>
+            </aside>
+          </section>
+
+          <section data-title="WiFi Positioning">
+            <h2>the Triforce of Power</h2>
+            <br />
+            <p>Core Location uses a (somewhat creepy) geo-tagged network of wifi signals to locate you</p>
+
+            <aside class="notes">
+              <ul>
+                <li>Snoops nearby Wifi SSIDs to somehow figure out where you are</li>
+                <li>Impossible to use on its own</li>
+                <li>Augments Cell & GPS</li>
+                <li>Probably ineffective in the countryside</li>
+                <li>Prone to user disapproval</li>
+            </aside>
+          </section>
+        </section>
 
           <section data-title="Platforms">
             <ul>
