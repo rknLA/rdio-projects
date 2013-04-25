@@ -1,0 +1,292 @@
+@charset "UTF-8";
+/**
+ * Rdio theme for reveal.js.
+ * 
+ * Copyright (C) 2013 Rdio, Inc. - http://rdio.com/
+ * Written by R. Kevin Nelson
+ */
+@font-face {
+  font-family: "Whitney";
+  src: url("../../../font/Whitney-Light.otf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*********************************************
+ * GLOBAL STYLES
+ *********************************************/
+body {
+  background: white;
+  background-color: white;
+}
+
+.reveal {
+  font-family: "Whitney", sans-serif;
+  font-size: 36px;
+  font-weight: 200;
+  letter-spacing: -0.02em;
+  color: #141619;
+}
+
+::selection {
+  color: white;
+  background: #ff5e99;
+  text-shadow: none;
+}
+
+/*********************************************
+ * HEADERS
+ *********************************************/
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  margin: 0 0 20px 0;
+  color: #2c3034;
+  font-family: "Whitney", sans-serif;
+  line-height: 0.9em;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  text-shadow: none;
+}
+
+.reveal h1 {
+  text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);
+}
+
+/*********************************************
+ * LINKS
+ *********************************************/
+.reveal a:not(.image) {
+  color: #0070b1;
+  text-decoration: none;
+  -webkit-transition: color .15s ease;
+  -moz-transition: color .15s ease;
+  -ms-transition: color .15s ease;
+  -o-transition: color .15s ease;
+  transition: color .15s ease;
+}
+
+.reveal a:not(.image):hover {
+  color: #5b6064;
+  text-shadow: none;
+  border: none;
+}
+
+.reveal .roll span:after {
+  color: #fff;
+  background: #004064;
+}
+
+/*********************************************
+ * IMAGES
+ *********************************************/
+.reveal section img {
+  margin: 15px 0px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 4px solid #141619;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  -webkit-transition: all .2s linear;
+  -moz-transition: all .2s linear;
+  -ms-transition: all .2s linear;
+  -o-transition: all .2s linear;
+  transition: all .2s linear;
+}
+
+.reveal a:hover img {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #0070b1;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.55);
+}
+
+/*********************************************
+ * NAVIGATION CONTROLS
+ *********************************************/
+.reveal .controls div.navigate-left,
+.reveal .controls div.navigate-left.enabled {
+  border-right-color: #0070b1;
+}
+
+.reveal .controls div.navigate-right,
+.reveal .controls div.navigate-right.enabled {
+  border-left-color: #0070b1;
+}
+
+.reveal .controls div.navigate-up,
+.reveal .controls div.navigate-up.enabled {
+  border-bottom-color: #0070b1;
+}
+
+.reveal .controls div.navigate-down,
+.reveal .controls div.navigate-down.enabled {
+  border-top-color: #0070b1;
+}
+
+.reveal .controls div.navigate-left.enabled:hover {
+  border-right-color: #5b6064;
+}
+
+.reveal .controls div.navigate-right.enabled:hover {
+  border-left-color: #5b6064;
+}
+
+.reveal .controls div.navigate-up.enabled:hover {
+  border-bottom-color: #5b6064;
+}
+
+.reveal .controls div.navigate-down.enabled:hover {
+  border-top-color: #5b6064;
+}
+
+/*********************************************
+ * PROGRESS BAR
+ *********************************************/
+.reveal .progress {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.reveal .progress span {
+  background: #0070b1;
+  -webkit-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  -moz-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  -ms-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  -o-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+}
+
+.reveal ul {
+  list-style: none;
+  margin-left: 0;
+}
+.reveal ul li {
+  margin-bottom: 0.41em;
+}
+.reveal ul li:before {
+  content: '•';
+  font-size: 0.6em;
+  vertical-align: top;
+  padding-right: 1em;
+}
+
+.reveal {
+  color: #141619;
+}
+
+.reveal .present {
+  text-align: left;
+  padding-left: 1em;
+}
+
+.chapter .reveal .state-background {
+  background-color: #0070b1;
+}
+
+.chapter h1, .chapter h2, .chapter h3, .chapter h4, .chapter h5, .chapter h6 {
+  text-align: center;
+  color: white;
+  text-shadow: 0px -3px 10px rgba(0, 0, 0, 0.5);
+}
+
+.title-slide .reveal .state-background {
+  background-color: #cdd0d5;
+  width: 100%;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.title-slide h1 {
+  color: #2c3034;
+  font-size: 1.8em;
+}
+.title-slide h2, .title-slide h3, .title-slide h4, .title-slide h5, .title-slide h6 {
+  color: #5b6064;
+}
+.title-slide div img {
+  border-style: none;
+  box-shadow: none;
+  background: none;
+  height: 0.9em;
+  vertical-align: baseline;
+  margin-left: -1.1em;
+  margin-right: 0.2em;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.reveal header {
+  background-color: transparent;
+  color: black;
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border-style: none none solid none;
+  border-bottom-color: #1687c8;
+  border-bottom-width: 1px;
+  margin-left: 11%;
+  padding: 0.6em 0 0.6em 0;
+  font-size: 0.8em;
+  font-weight: Light;
+}
+
+.reveal footer {
+  background-color: transparent;
+  background-image: url("../../../img/rdio-logo.png");
+  background-size: 50px 20px;
+  background-repeat: no-repeat;
+  background-position: left center;
+  color: #5b6064;
+  display: block;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 89%;
+  margin-left: 11%;
+  border-style: solid none none none;
+  border-top-color: #b3b3b3;
+  border-top-width: 1px;
+  padding: 1.3em 1em 1em 0;
+  margin-bottom: 0.3em;
+  vertical-align: baseline;
+  text-transform: uppercase;
+  font-size: 0.3em;
+  text-align: right;
+}
+
+.reveal .examples-buttons {
+  display: block;
+  position: relative;
+  width: 90%;
+  margin: 15px auto;
+}
+.reveal .examples-buttons .btn {
+  display: inline-block;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  padding: 0.2em 0.4em 0.2em 0.4em;
+  border-color: #b3b3b3;
+  color: #0070b1;
+}
+.reveal .examples-buttons .btn:hover {
+  background-color: #cdd0d5;
+  cursor: pointer;
+}
+.reveal .examples-buttons ul li:before {
+  content: '';
+  vertical-align: top;
+  padding: 0;
+  margin: 0;
+}
+
+.reveal .column {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.reveal .column.right {
+  margin-left: 0.5em;
+}
