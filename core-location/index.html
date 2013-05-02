@@ -217,6 +217,34 @@
         </section>
 
         <section data-state="chapter">
+          <h1>Meet the Objects</h1>
+        </section>
+
+        <section data-title="CLLocation">
+          <h3>CLLocation</h3>
+          <ul>
+            <li>coordinate.latitude</li>
+            <li>coordinate.longitude</li>
+            <li>altitude</li>
+            <li>horizontalAccuracy</li>
+            <li>verticalAccuracy</li>
+            <li>timestamp</li>
+          </ul>
+          <aside class="notes">
+          Aside from timestamp, these are all typedef'd to double.  Altitude and accuracy are distances, lat and lng are coordinates.
+          </aside>
+        </section>
+
+        <section data-title="CLRegion">
+        <h3>CLRegion</h3>
+        <ul>
+          <li>center</li>
+          <li>radius</li>
+          <li>identifier</li>
+        </ul>
+        </section>
+
+        <section data-state="chapter">
           <h1>all our base are belong to them</h1>
         </section>
 
@@ -262,6 +290,32 @@
           </section>
         </section>
 
+        <section data-title="Testing">
+          Simulator only simulates so much...<br />
+          <a class="fragment" href="http://stackoverflow.com/a/8618993/1309238">No Significant Changes</a>
+
+          <aside class="notes">
+          <ul>
+            <li>Simulator doesn't simulate significant location changes.</li>
+            <li>thus it doesn't do region monitoring well</li>
+          </ul>
+          </aside>
+        </section>
+
+        <section data-title="Testing">
+          <h3>Go outside</h3>
+          <img src="img/test-drive.jpg" width="500" alt="Test drive photo" />
+          <div class="caption">
+              Photo by Amanda Law.  <a href="http://www.madeinla2012.org/made-in-l-a-soundmap-app/">http://www.madeinla2012.org/made-in-l-a-soundmap-app/</a>
+          </div>
+
+          <aside class="notes">
+            <ul>
+              <li>it's a blessing and a curse</li>
+            </ul>
+          </aside>
+        </section>
+
         <section data-title="Making it useful again">
           <h3>TODO</h3>
           <ul>
@@ -286,6 +340,7 @@
           <h2 class="fragment">Tell your users to enable Wifi!</h2>
 
           <aside class="notes">
+            fragment: tell your users to enable wifi
             <ul>
               <li>And if you can get them to actually do it, you deserve a medal</li>
             </ul>
