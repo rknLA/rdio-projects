@@ -72,6 +72,18 @@ $linkColorHover: $dark-grey-text;
 .reveal .present {
   text-align: left;
   padding-left: 1em;
+
+  img {
+    border-style: none;
+    box-shadow: none;
+  }
+  ul {
+    vertical-align: top;
+  }
+  ul.with-image {
+    margin-top: 1em;
+    margin-left: 4em;
+  }
 }
 
 .chapter .reveal .state-background {
