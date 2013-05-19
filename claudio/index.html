@@ -5,6 +5,7 @@
   <title>Claudio</title>
 
   <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.rc.1/handlebars.min.js"></script>
   <!-- rdio localhost
   <script src="http://rdio.localhost:8000/api/api.js?helper=helper.html&client_id=lCwvBFeXPTgxb28gR15Wsw"></script>
   -->
@@ -15,6 +16,12 @@
   <script src="js/main.js"></script>
 
   <link rel="stylesheet" type="text/css" href="css/main.css" media="screen" />
+
+  <script id="soundcloudUserTemplate" type="text/x-handlebars-template">
+    <li class="soundcloud user">
+      <span class="soundcloud_username">{{username}}</span>
+    </li>
+  </script>
 </head>
 
 <body>
@@ -31,6 +38,18 @@
   </div>
   <div class="hidden connect_button soundcloud">
     <img src="http://connect.soundcloud.com/2/btn-connect-sc-l.png" />
+  </div>
+
+  <div class="soundcloud following">
+    <ul>
+    </ul>
+  </div>
+  <div class="rdio recommendations">
+  </div>
+
+  <div class="rdio following">
+  </div>
+  <div class="soundcloud recommendations">
   </div>
 </body>
 </html>

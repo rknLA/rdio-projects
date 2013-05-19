@@ -50,18 +50,25 @@
     authProcessesCompleted: function() {
       var self = window.Claudio;
       self._connectSoundcloudButton.hide();
-    }
-  };
-
-  var _sc_noconflict = window.MySoundcloudApp;
-  window.MySoundcloudApp = {
-    setup: function() {
+      self.findRecommendations();
     },
 
-    onConnectClicked: function() {
-      //
+    findRecommendations: function() {
+      var scFollowing = $('.soundcloud.following ul');
+      SC.get('/me/followings', function(users) {
+        var i;
+        var userElSrc = $('#soundcloudUserTemplate').html();
+        var userTemplate = Handlebars.compile(userElSrc);
+        for (i = 0; i < users.length; ++i) {
+          var user = users[i];
+          var userEl = userTemplate(user);
+          scFollowing.append(userEl);
+        }
+        $('.soundcloud_username').click(function(e) {
+          console.log(e.target);
+        });
+      });
     }
-    
   };
 
   $('document').ready(function() {
