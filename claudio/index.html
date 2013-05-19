@@ -10,16 +10,27 @@
   -->
   <!-- rdio.com
   -->
-  <script src="//www.rdio.com/api/api.js?helper=helper.html&client_id=lCwvBFeXPTgxb28gR15Wsw"></script>
+  <script src="http://www.rdio.com/api/api.js?helper=helper.html&client_id=lCwvBFeXPTgxb28gR15Wsw"></script>
   <script src="http://connect.soundcloud.com/sdk.js"></script>
   <script src="js/main.js"></script>
 
-  <link rel="stylesheet" href="css/main.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="css/main.css" media="screen" />
 </head>
 
 <body>
-  <section class="content">
-  Your content here.
-  </section>
+  <div class="loading">
+    Loading...
+  </div>
+
+  <div class="description">
+    Claudio recommends you albums on Rdio based on who you follow on Soundcloud, and recommends you people on Soundcloud based on what you listen to on Rdio.  Connect to Rdio and Soundcloud to get going!
+  </div>
+
+  <div class="hidden connect_button rdio">
+    Connect Rdio
+  </div>
+  <div class="hidden connect_button soundcloud">
+    <img src="http://connect.soundcloud.com/2/btn-connect-sc-l.png" />
+  </div>
 </body>
 </html>
