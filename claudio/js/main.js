@@ -8,6 +8,10 @@
     
     _connectRdioButton: null,
     _connectSoundcloudButton: null,
+    _soundcloudData: {
+    },
+    _rdioData: {
+    },
 
     onRdioReady: function() {
       var self = this;
@@ -44,6 +48,7 @@
     },
 
     onSoundcloudConnectClicked: function() {
+      console.log('soundcloud connect clicked');
       SC.connect(window.Claudio.authProcessesCompleted);
     },
 
@@ -54,8 +59,10 @@
     },
 
     findRecommendations: function() {
+      var self = this;
       var scFollowing = $('.soundcloud.following ul');
       SC.get('/me/followings', function(users) {
+        self._soundcloudData['following'] = users;
         var i;
         var userElSrc = $('#soundcloudUserTemplate').html();
         var userTemplate = Handlebars.compile(userElSrc);
@@ -67,6 +74,10 @@
         $('.soundcloud_username').click(function(e) {
           console.log(e.target);
         });
+      });
+      SC.get('/me/favorites', function(tracks) {
+        self._soundcloudData['favorites'] = tracks;
+        console.log(tracks);
       });
     }
   };
