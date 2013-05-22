@@ -16,7 +16,10 @@
       log("you hit the authentication button");
       $('#authenticationButton').html('Authenticating')
         .attr('disabled', 'disabled');
-      R.authenticate(authenticationComplete);
+      R.authenticate({
+        complete: authenticationComplete,
+        mode: 'redirect'
+      });
     };
 
     var authenticationComplete = function(success) {
