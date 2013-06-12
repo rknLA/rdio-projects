@@ -188,6 +188,8 @@ body {
 .reveal .present ul.with-image {
   margin-top: 1em;
   margin-left: 4em;
+  display: inline-block;
+  width: 13em;
 }
 
 .chapter .reveal .state-background {
