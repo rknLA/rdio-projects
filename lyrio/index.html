@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>JS API App Template</title>
+
+  <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.rc.1/handlebars.min.js"></script>
+  <!-- rdio localhost
+  <script src="//rdio.localhost:8000/api/api.js?helper=helper.html&client_id=aUfNwyVsRoXvi_aCAzUF6Q"></script>
+  -->
+  <!-- rdio.com
+  -->
+  <script src="//www.rdio.com/api/api.js?helper=helper.html&client_id=aUfNwyVsRoXvi_aCAzUF6Q"></script>
+
+  <link rel="stylesheet" href="css/main.css" media="screen" />
+  <script src="js/main.js"></script>
+</head>
+
+<script id="userIdentityTemplate" type="text/x-handlebars-template">
+  <div id="avatar">
+    <img src="{{avatarUrl}}" width="50" height="50" />
+  </div>
+  <div id="userInfo">Logged in as:
+    <span class="userId">{{userName}}</span>
+  </div>
+</script>
+
+<body>
+  <header>
+    <h1>Lyrio</h1>
+  </header>
+  <div class="lyrio_loading">
+    Rdio is Loading...
+  </div>
+  <div class="lyrio_you">
+  </div>
+  <section class="lyrio_current_track">
+    <div class="track_title">
+    </div>
+  </section>
+</body>
+</html>
