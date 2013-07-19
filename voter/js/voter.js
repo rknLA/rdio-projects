@@ -77,6 +77,7 @@
     //kick playstateDidChange on load
     playstateDidChange(R.player.playState());
     playerSourceDidChange(R.player.playingSource());
+    playerTrackDidChange(R.player.playingTrack());
 
     // setup pivot button
     $('#pivot').on('click', handlePivotPressed);
@@ -88,6 +89,7 @@
   };
 
   var playerTrackDidChange = function (newValue) {
+    log('player track did change', newValue);
     updatePlayerInfo(newValue);
     Keen.addEvent("trackChanged", {
       userKey: R.currentUser.get('key'),
