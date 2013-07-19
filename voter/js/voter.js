@@ -253,6 +253,7 @@
   };
 
   var playstateDidChange = function(newValue) {
+    log('Playstate changed to ' + newValue);
     if (newValue == R.player.PLAYSTATE_PLAYING) {
       $('#playstate').empty().append('Playing');
       var currentTrack = R.player.playingTrack();
