@@ -4,7 +4,9 @@
   <meta charset="utf-8" />
   <title>JS API App Template</title>
 
+  <link rel="stylesheet" href="../shared/bootstrap/css/bootstrap.css" media="screen" />
   <link rel="stylesheet" href="css/main.css" media="screen" />
+  <link rel="stylesheet" href="../shared/bootstrap/css/bootstrap-responsive.css" media="screen" />
 
   <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.rc.1/handlebars.min.js"></script>
@@ -20,19 +22,17 @@
   <script src="js/replaylist.js"></script>
 
   <script id="authTemplate" type="text/x-handlebars-template">
-    <div id="avatar">
-      <img src="{{avatarUrl}}" width="50" height="50" />
-    </div>
-    <div id="userInfo">Logged in as:
-      <span class="userId">{{userName}}</span>
+    <div class="avatar">
+      <img src="{{avatarUrl}}" class="avatar-image" />
+      <span>{{userName}}</span>
     </div>
   </script>
 
   <script id="playlistSearchTemplate" type="text/x-handlebars-template">
     <form>
-      <label for="playlist_url">Enter URL for playlist here:</label>
-      <input type="text" name="playlist_url" id="playlist_search_input"></input>
-      <button id="playlist_search_button">Search!</button>
+      <label for="playlist_url">Enter a URL, Rdio Key, or search for a playlist here:</label>
+      <input type="text" name="playlist_url" class="playlist_search_input"></input>
+      <button class="playlist_search_button">Search!</button>
     </form>
     <div class="clone-results"></div>
   </script>
@@ -51,7 +51,11 @@
       </p>
     </div>
     <div class="clone">
-      <button id="clone_playlist">Clone</button>
+      Clone into
+      <select class="playlist-destination-selector" name="playlist-destination">
+        <option name="new" value="new">New Playlist</option>
+      </select>
+      <button class="clone_playlist">Go!</button>
     </div>
     <div class="playlist-tracks">
       <ol>
@@ -65,27 +69,43 @@
     </li>
   </script>
 
+  <script id="playlistDestinationItemTemplate" type="text/x-handlebars-template">
+    <option class="existing_playlist" value="{{key}}" data-r-playlist-length="{{length}}">{{name}}</option>
+  </script>
+
 </head>
 
 <body>
-  <header>
-    <h1>RePlaylist</h1>
-    <p>A tool for copying other people's playlists and pretending they're your own.</p>
-  </header>
-  <section data-r-auth="userBadge">
-  Rdio Authentication Section
-  </section>
+  <div class="container-narrow">
+    <div class="masthead">
+      <ul class="nav nav-pills pull-right">
+        <li><section data-r-auth="userBadge"></section></li>
+      </ul>
+    </div>
+    <h3 class="muted">RePlaylist</h3>
 
-  <section class="ui">
-  Put a form for source playlist here.
+    <hr />
 
-  Also put the clone and save buttons here.
-  </section>
+    <div class="row-fluid marketing">
+      <div class="span12">
+        <p>RePlaylist tool for copying other people's playlists on <a href="http://www.rdio.com/">Rdio</a> and pretending that they're your own.</p>
+      </div>
+    </div>
 
-  <section class="sourcePlaylist">
-  Render the playlist here.
-  </section>
+    <div class="row-fluid">
+      <section class="ui">
+      Put a form for source playlist here.
 
+      Also put the clone and save buttons here.
+      </section>
+    </div>
+
+    <div class="row-fluid">
+      <section class="sourcePlaylist">
+      Render the playlist here.
+      </section>
+    </div>
+  </div>
 
 </body>
 </html>
