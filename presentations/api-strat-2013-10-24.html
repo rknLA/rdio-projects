@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+    <!-- this is all reveal.js boiler plate.  Title, description, author, and theme have been changed. -->
+    <title>Rdio API - API Strategy Conference 2013</title>
+
+		<meta name="description" content="Rdio API presentation for API Strategy Conference, 2013">
+		<meta name="author" content="R. Kevin Nelson">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<link rel="stylesheet" href="reveal/css/reveal.min.css">
+		<link rel="stylesheet" href="reveal/css/theme/api.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="reveal/lib/css/github.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="reveal/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+
+		<![endif]-->
+
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+      <header></header>
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+        
+        <!-- Title Slide -->
+        <section data-state="title-slide">
+          <div class="left">
+          </div>
+          <div class="right">
+            <h1>Avoiding the Pentalobe</h1>
+            <h2>API Philosophy for Product Companies</h2>
+            <h4>API Strategy Conference, 2013</h4>
+            <h3>R. Kevin Nelson</h3>
+            <h3><img src="img/twitter-bird-light-bgs.png" /><a href="http://twitter.com/rknLA">@rknLA</a></h3>
+          </div>
+          
+          <aside class="notes">
+            <ul>
+              <li>Hi Hello</li>
+              <li>What exactly do I mean by "Avoiding the Pentalobe?"</li>
+            </ul>
+          </aside>
+        </section>
+
+        <!-- Pentalobe action -->
+        <section>
+          <section data-title="WTF?">
+            <p>
+              <img src="api-strat/img/iphone4.jpg" />
+            </p>
+
+            <aside class="notes">
+              <ul>
+                <li>How many of you have one of these in your pockets?</li>
+                <li>Go ahead, take it out and look at it.</li>
+              </ul>
+            </aside>
+          </section>
+          
+          <section data-title="WTF?">
+            <p>
+              <img src="api-strat/img/iphone-pentalobe.png" />
+            </p>
+
+            <aside class="notes">
+              <ul>
+                <li>This is the pentalobe</li>
+              </ul>
+            </aside>
+          </section>
+        </section>
+
+        <section data-title="Pentalove vs. Torx">
+          <p>
+            <img src="api-strat/img/torx-v-pentalobe.jpg" />
+          </p>
+
+          <aside class="notes">
+            <ul>
+              <li>Ok, well, why should I care?</li>
+              <li>The three on the left are Torx, and ISO Standard sizes</li>
+              <li>Notice the bubbles. Star-shaped screws already exist...</li>
+              <li>NEXT</li>
+            </ul>
+          </aside>
+        </section>
+        
+        <section data-title="Well, it _can_ be used to hammer stuff...">
+          <p>
+            <img src="api-strat/img/php-hammer.jpg" />
+          </p>
+
+          <aside class="notes">
+            <ul>
+              <li>And you can use them, but it's kind of like hammering a nail with this.</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section data-title="grumble...">
+          <p>
+            <img src="api-strat/img/steve-jobs-laughing.jpg" />
+          </p>
+
+          <aside class="notes">
+            <ul>
+              <li>Other companies, and consumers had to run to manufacture new tools.</li>
+              <li>thanks a lot, jerks</li>
+              <li>Ok, what does this have to do with APIs?</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <section data-title="What even is an API?">
+            <h2>Application</h2>
+            <h2>Programming</h2>
+            <h2>Interface</h2>
+          </section>
+
+          <section data-title="Application">
+            <p>
+            n. a program or piece of software designed and written to fulfill a particular purpose of the user
+            </p>
+
+            <aside class="notes">
+              <ul>
+                <li>This is your, or someone elses product</li>
+              </ul>
+            </aside>
+          </section>
+
+          <section data-title="Programming">
+            <p>
+             n. a planned series of future events, items, or performances
+            </p>
+
+            <aside class="notes">
+              <ul>
+                <li>Programming as a concept isn't exclusive to software.</li>
+                <li>Your ruby script is just a sequence of events for the computer to perform.</li>
+              </ul>
+            </aside>
+          </section>
+
+          <section data-title="Interface">
+            <p>
+            n. a device or program for connecting two items of hardware or software so that they can be operated jointly or communicate with each other
+            </p>
+
+            <aside class="notes">
+              <p>Let's let this set in a minute.</p>
+              <p>APIs can be interfaces for programming new apps, or interacting with exisisting ones.</p>
+              <p>If you are thinking your company's API is only it's HTTP interface, you're either shorthanding for convenience, or you're limiting your thinking</p>
+            </aside>
+          </section>
+        </section>
+
+        <section data-title="Pentalobe Screwdriver Interface">
+          <h3>These are all interfaces!</h3>
+          <p>
+            <img src="api-strat/img/torx-v-pentalobe.jpg" />
+          </p>
+
+        </section>
+
+
+        <section>
+          <section data-title="APIs All the Way Down - Rails">
+            <p>
+              <img src="api-strat/img/rails-api.png" />
+            </p>
+
+            <aside class="notes">
+              <ul>
+                <li>Let's look at some other interfaces and things built on APIs</li>
+              </ul>
+            </aside>
+          </section>
+
+          <section data-title="APIs All the Way Down - Django">
+            <p>
+              <img src="api-strat/img/django-api.png" />
+            </p>
+          </section>
+
+          <section data-title="APIs All the Way Down - MySQL">
+            <p>
+              <img src="api-strat/img/mysql-api.png" />
+            </p>
+          </section>
+
+          <section data-title="APIs All the Way Down - Your Web App">
+            <p>
+              <img src="api-strat/img/webapp-api.png" />
+            </p>
+          </section>
+
+          <section data-title="APIs All the Way Down - Finagle at Twitter">
+            <p>
+              <img src="api-strat/img/finagle-twitter.png" />
+            </p>
+            <h6><a href="https://blog.twitter.com/2011/finagle-a-protocol-agnostic-rpc-system">https://blog.twitter.com/2011/finagle-a-protocol-agnostic-rpc-system</a></h6>
+
+            <aside class="notes">
+              <ul>
+                <li>I particularly like this diagram, -- data transfer protocols</li>
+                <li>http, thrift</li>
+                <li>problem is, this is like deciding to use screws or nails</li>
+                <li>which kind of screws? what size nails?</li>
+                <li>imagine third party services here</li>
+                <li>s/mysql/parse</li>
+              </ul>
+            </aside>
+          </section>
+        </section>
+
+        <section data-title="Outsourcing">
+          <h2>What happens when you outsoure some of these components?</h2>
+          <aside class="notes">
+            <p>Data to parse, real-time to Firebase, email to SendGrid, credit card to Stripe, etc</p>
+          </aside>
+        </section>
+
+        <section data-title="Taking the shortcut">
+          <p>
+          <blockquote>
+            We sell shortcuts.
+          </blockquote>
+            <h6 style="float:right;">-Nathan Seidle, <a href="https://www.sparkfun.com/news/226">What does SparkFun do?</a></h6>
+          </p>
+        </section>
+
+        <section data-title="I got 99 problems...">
+          <p>
+            Problem: <br />
+            None of your shortcuts are standardized.
+          </p>
+
+          <aside class="notes">
+            <ul>
+              <li>Implication: Nothing is interoperable.</li>
+              <li>You might out grow your shortcuts.</li>
+              <li>A new challenger might appear.</li>
+              <li>Your shortcut might get acquired.</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section data-title="...what about solutions?">
+          <p>
+            <img src="api-strat/img/standardize-all-the-things.jpg" />
+          </p>
+        </section>
+
+        <section data-title="">
+          <p>
+          <img src="api-strat/img/twitter-api-root.jpg" />
+          </p>
+        </section>
+
+			</div>
+
+      <footer>
+        &copy; 2013 Rdio, Inc.  All rights reserved.
+      </footer>
+
+		</div>
+
+
+		<script src="reveal/lib/js/head.min.js"></script>
+		<script src="reveal/js/reveal.min.js"></script>
+
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: false,
+				progress: true,
+				history: true,
+				center: true,
+				rollingLinks: false,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'reveal/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'reveal/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+      // Slide titles
+      var showSlideHeader = function(current) {
+        var headers = document.getElementsByTagName('header') || [];
+        var header = headers[0];
+
+        if (header) {
+          var title = current.dataset.title;
+          if (title !== undefined) {
+            header.innerHTML = title;
+            header.style.display = null;
+          } else {
+            header.style.display = 'none';
+          }
+        }
+      };
+      Reveal.addEventListener('ready', function(e) {
+        showSlideHeader(e.currentSlide);
+      });
+      Reveal.addEventListener('slidechanged', function(e) {
+        showSlideHeader(e.currentSlide);
+      });
+
+
+      /* Set up charts example on deck load.  When I didn't do this, there was a weird layout
+         glitch that would happen when that slide was shown. This little bit fixes it. */
+      Reveal.addEventListener('ready', function(e) {
+        var codeElement = document.getElementById('js-example-code');
+        var chartsExample = document.getElementById('js-charts-example-code').innerHTML;
+        codeElement.innerHTML = chartsExample;
+      });
+
+
+      /* Custom Rdio listener for JS API Examples */
+      /* This is the bulk of the example runner.  Hopefully it's not too hard to understand. */
+      Reveal.addEventListener('slidechanged', (function() {
+        /* note that this is a closure, so all of this stuff gets executed when the event listener gets added, not when the event occurs */
+
+        /* code runner */
+        var codeElement = document.getElementById('js-example-code');
+
+        var runExample = function() {
+          var code = codeElement.textContent || codeElement.innerText;
+          eval(code);
+          hljs.highlightBlock(codeElement);
+        };
+
+        codeElement.onkeydown = function(e) {
+          if (e.ctrlKey && e.keyCode == 13) {
+            //ctrl enter
+            runExample();
+            return false;
+          };
+        };
+
+
+        /* buttons to show new examples */
+        var chartsExample = document.getElementById('js-charts-example-code').innerHTML;
+        var authExample = document.getElementById('js-auth-example-code').innerHTML;
+        var searchExample = document.getElementById('js-search-example-code').innerHTML;
+        var eventsExample = document.getElementById('js-events-example-code').innerHTML;
+
+        document.getElementById('js-example-charts-btn').onclick = function() {
+          codeElement.innerHTML = chartsExample;
+          hljs.highlightBlock(codeElement);
+        };
+        document.getElementById('js-example-auth-btn').onclick = function() {
+          codeElement.innerHTML = authExample;
+          hljs.highlightBlock(codeElement);
+        };
+        document.getElementById('js-example-events-btn').onclick = function() {
+          codeElement.innerHTML = eventsExample;
+          hljs.highlightBlock(codeElement);
+        };
+        document.getElementById('js-example-search-btn').onclick = function() {
+          codeElement.innerHTML = searchExample;
+          hljs.highlightBlock(codeElement);
+        };
+
+
+        /* reroute console to a div */
+        var originalConsole = window.console;
+
+        var logEl = document.getElementById('js-example-output');
+        var divConsole = {
+          log: function() {
+            var args = Array.prototype.slice.call(arguments);
+            logEl.innerHTML = args.join('\n');
+          },
+          error: function() {
+            var args = Array.prototype.slice.call(arguments);
+            logEl.innerHTML = "Error: ";
+            logEl.innerHTML += args.join('\n');
+          }
+        };
+
+        var eventHandler = function(e) { 
+          /* this is the actual function that gets run on the slide-changed event. it just loads up the default example and swaps the console. */
+          if (e.currentSlide.id == 'slide-some-examples') {
+            codeElement.innerHTML = chartsExample;
+            hljs.highlightBlock(codeElement);
+            window.console = divConsole;
+          } else {
+            /* redundant in most cases, but cheap, and a decent enough hammer */
+            window.console = originalConsole;
+          }
+        };
+        return eventHandler;
+      })());
+		</script>
+
+	</body>
+</html>
