@@ -44,7 +44,7 @@
           </div>
           <div class="right">
             <h1>Rdio API</h1>
-            <h4>Music Hack Day Chicago 2013</h4>
+            <h4>Music Hack Day Boston 2013</h4>
             <h3>R. Kevin Nelson</h3>
             <h3><img src="img/twitter-bird-light-bgs.png" /><a href="http://twitter.com/rknLA">@rknLA</a></h3>
             <h3><img src="img/rdio-o.png" /><a href="http://rd.io/people/rknLA">http://rd.io/people/rknLA</a></h3>
@@ -137,6 +137,11 @@
           </section>
         </section>
 
+        <section data-title="Method documentation">
+          <h3>Our web service methods are pretty thorough</h3>
+          <p>Check them out at <a href="http://www.rdio.com/developers/docs/web-service/methods/">http://www.rdio.com/developers/docs/web-service/methods/</a></p>
+        </section>
+
         <section data-state="chapter">
           <h1>Let's talk about JavaScript</h1>
 
@@ -205,8 +210,15 @@ alert(current.get('name') + " - " + current.get('artist'));</code>
           </ul>
         </section>
 
-        <section data-title="Documentation">
+        <section data-title="Documentation & Support">
           <h3><a href="http://www.rdio.com/developers/">http://www.rdio.com/developers/</a></h3>
+          <h3>#rdio or #musichackday on irc.freenode.net</h3>
+        </section>
+
+        <section data-title="Prize!">
+          <h2>Best use of Rdio API</h2>
+          <h3>1 Year of Rdio Unlimited</h3>
+          <h4>for every team member</h4>
         </section>
 
         <section data-state="chapter">
@@ -258,7 +270,7 @@ alert(current.get('name') + " - " + current.get('artist'));</code>
     <script id="js-search-example-code" type="text/x-js-template">R.ready(function() {
   R.request({
     method: 'search',
-    content: { query: 'millions now living will never die', types: 'Album' },
+    content: { query: "signals calls and marches", types: 'Album' },
     success: function(response) {
       var result = response.result.results[0];
       var name = result.name;
