@@ -3,16 +3,34 @@
 
   Replaylist.currentPlaylist = null;
 
+  Replaylist.userPlaylists = [];
+
   Replaylist.onAuthenticated = function() {
     console.log('authentication!');
 
     Replaylist.renderForm();
     Replaylist.renderPlaylist();
+
+    R.ready(function() {
+      R.request({
+        method: 'getPlaylists',
+        content: {
+          extras: '-*,name,key,length'
+        },
+        success: function(res) {
+          Replaylist.userPlaylists = res.result.owned;
+        },
+        error: function(err) {
+          console.log("failed to grab user playlists");
+          console.log(err);
+        }
+      });
+    });
   };
 
   Replaylist.handleSearchEvent = function(e) {
     e.preventDefault();
-    var q = $('#playlist_search_input').val();
+    var q = $('.playlist_search_input :first').val();
     Replaylist.searchForPlaylist(q);
   };
 
@@ -41,10 +59,20 @@
     });
   };
 
+  var cloneSuccessful = function(res) {
+    console.log('playlist cloned!');
+
+    Replaylist.renderPlaylist();
+    $('.playlist_search_input :first').val('');
+
+    var text = '<h3>Cloned successfuly!</h3>';
+    $('.clone-results :first').html(text).fadeIn(200).fadeOut(3000);
+  };
+
   Replaylist.handleCloneClicked = function(e) {
     console.log('clone clicked!');
 
-    // mostly just for shorthand.
+    // prepare the track keys
     var pl = Replaylist.currentPlaylist;
     var trackKeysArray = [];
 
@@ -53,30 +81,85 @@
     });
     var tracksKeys = trackKeysArray.join(',');
 
-    R.request({
-      method: 'createPlaylist',
-      content: {
-        name: pl.name,
-        description: pl.description,
-        tracks: tracksKeys
-      },
-      success: function(res) {
-        console.log('playlist cloned!');
+    var destination = $('.playlist-destination-selector').val();
 
-        Replaylist.renderPlaylist();
-        $('#playlist_search_input').val('');
+    if (destination == "new") {
+      R.request({
+        method: 'createPlaylist',
+        content: {
+          name: pl.name,
+          description: pl.description,
+          tracks: tracksKeys
+        },
+        success: cloneSuccessful,
+        error: function(res) {
+          console.log('error cloning playlist');
+          console.log(res);
+          var text = "Error! ";
+          text += res.message;
+          $('.clone-results :first').html(text).show(400);
+        }
+      });
+    } else {
+      // destination is a playlist
+      // clear the existing one
+      var length = $('.existing_playlist[value=' + destination + ']').first().data().rPlaylistLength;
 
-        var text = '<h3>Cloned successfuly!</h3>';
-        $('.clone-results :first').html(text).fadeIn(200).fadeOut(3000);
-      },
-      error: function(res) {
-        console.log('error cloning playlist');
-        console.log(res);
-        var text = "Error! ";
-        text += res.message;
-        $('.clone-results :first').html(text).show(400);
+      var addNewTracks = function() {
+        R.request({
+          method: 'addToPlaylist',
+          content: {
+            playlist: destination,
+            tracks: tracksKeys
+          },
+          success: cloneSuccessful,
+          error: function(res) {
+            console.log('error updating existing playlist. well, this is bad');
+            console.log(res);
+          }
+        });
+      };
+
+      var removeExistingTracks = function(tracksArray) {
+        debugger
+        R.request({
+          method: 'removeFromPlaylist',
+          content: {
+            playlist: destination,
+            index: 0,
+            count: length,
+            tracks: tracksArray.join(',')
+          },
+          success: function(res) {
+            addNewTracks();
+          },
+          error: function(res) {
+            console.log("error removing tracks from existing playlist, bailing");
+            console.log(res);
+          }
+        });
       }
-    });
+
+      if (length > 0) {
+        R.request({
+          method: 'get',
+          content: {
+            keys: destination,
+            extras: '-*,trackKeys'
+          },
+          success: function(res) {
+            removeExistingTracks(res.result[destination].trackKeys);
+          },
+          error: function(res) {
+            console.log("error getting tracks from existing playlist, bailing");
+            console.log(res);
+          }
+        });
+        
+      } else {
+        addNewTracks();
+      }
+    }
   };
 
   Replaylist.renderForm = function() {
@@ -84,7 +167,7 @@
 
     var source = $('#playlistSearchTemplate').html();
     ui.empty().append(Handlebars.compile(source)());
-    $('#playlist_search_button').click(Replaylist.handleSearchEvent);
+    $('.playlist_search_button :first').click(Replaylist.handleSearchEvent);
     $('.clone-results :first').fadeOut();
   };
 
@@ -104,7 +187,7 @@
     var playlistContents = playlistTemplate(playlist);
     playlistSection.empty().append(playlistContents);
 
-    $('#clone_playlist').click(Replaylist.handleCloneClicked);
+    $('.clone_playlist :first').click(Replaylist.handleCloneClicked);
 
     var playlistOL = $('.playlist-tracks :first').children('ol');
 
@@ -113,6 +196,15 @@
     $.each(playlist.tracks, function(i, track) {
       console.log(i, track);
       playlistOL.append(trackTemplate(track));
+    });
+
+    var destinationChoices = $('.playlist-destination-selector');
+
+    var destinationItemSource = $('#playlistDestinationItemTemplate').html();
+    var destinationItemTemplate = Handlebars.compile(destinationItemSource);
+    $.each(Replaylist.userPlaylists, function(i, pl) {
+      console.log(i, pl);
+      destinationChoices.append(destinationItemTemplate(pl));
     });
   };
 })();
