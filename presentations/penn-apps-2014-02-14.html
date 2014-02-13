@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+    <title>Rdio API - Penn Apps, Spring 2014</title>
+
+		<meta name="description" content="Rdio API presentation for Penn Apps, Spring 2014">
+		<meta name="author" content="R. Kevin Nelson">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<link rel="stylesheet" href="reveal/css/reveal.min.css">
+		<link rel="stylesheet" href="reveal/css/theme/rdio.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="reveal/lib/css/github.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="reveal/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+<script src="//www.rdio.com/api/api.js?helper=helper.html&client_id=FJsI8SigdAUhXEjdsXFa6Q"></script>
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+      <header></header>
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+        
+        <!-- Title Slide -->
+        <section data-state="title-slide">
+          <div class="left">
+          </div>
+          <div class="right">
+            <h1>Rdio API</h1>
+            <h4>Penn Apps, Spring 2014</h4>
+            <h3>R. Kevin Nelson</h3>
+            <h3><img src="img/twitter-bird-light-bgs.png" /><a href="http://twitter.com/rknLA">@rknLA</a></h3>
+            <h3><img src="img/rdio-o.png" /><a href="http://rd.io/people/rknLA">http://rd.io/people/rknLA</a></h3>
+          </div>
+          
+          <aside class="notes">
+            <ul>
+              <li>Hi, my name is Kevin Nelson, and I'm a Developer Advocate and Engineer at Rdio</li>
+              <li>I'm on twitter at...</li>
+              <li>The hashtag for this panel is...</li>
+              <li><strong>How many of you know what Rdio is?</strong></li>
+              <li><strong>How many of you use Rdio?</strong></li>
+              <li><strong>How many of you have used our API?</strong></li>
+            </ul>
+          </aside>
+        </section>
+
+        <!-- Overview -->
+        <section data-state="chapter">
+          <h1>Overview</h1>
+        </section>
+
+        <section>
+          <h1>Follow Along</h1>
+          <h2><a href="http://bit.ly/rdio-pennapps">http://bit.ly/rdio-pennapps</a></h2>
+        </section>
+
+
+        <section data-title="About Rdio">
+          <ul>
+            <li>We stream music from the internet.
+            <li>We sync music to your phone.</li>
+            <li>We don't have advertisements.</li>
+            <li>We have (almost) all the songs.</li>
+            <li><em>We have an API</em></li>
+          </ul>
+          <br />
+          <br />
+          <h4><a href="http://www.rdio.com">http://www.rdio.com</a></h4>
+          <h4><a href="http://www.rdio.com/developers/">http://www.rdio.com/developers/</a></h4>
+
+          <aside class="notes">
+            Ok, well, for those of you unfamiliar.<br />
+            We are an on-demand music streaming subscription service.<br />
+            We have 20 million tracks and counting.<br />
+            Our mobile apps have a sync feature for offline playback.<br />
+            More marketing info at rdio.com/features<br />
+          </aside>
+        </section>
+
+        <section data-title="Student Discounts">
+          <h3>Rdio Student Discount</h3>
+          <br />
+          <ul>
+            <li>50% off of Rdio Unlimited</li>
+            <li><a href="http://www.rdio.com/students">http://www.rdio.com/students/</a></li>
+          </ul>
+          <br />
+          <br />
+
+          <aside class="notes">
+            About a month ago we rolled out student discounts.<br />
+            50% off for as long as you're a student. <br />
+          </aside>
+        </section>
+
+
+        <section>
+          <section data-title="About our API">
+            <p>Features:</p>
+            <ul>
+              <li>Music streaming</li>
+              <li>Web Services (metadata)</li>
+            </ul>
+
+            <aside class="notes">
+              Our service is built on our API.<br />
+              Not all of it is public, but the public-facing components allow you to accomplish most tasks that you would attempt using our interface.<br />
+              <br />
+              integrating playback, manipulating playlists and collections, and accessing our social graph.
+              <br />
+
+            </aside>
+          </section>
+
+          <section data-title="Platforms">
+            <ul>
+              <li>Web (server-side)</li>
+              <li>Mobile (iOS, Android)</li>
+            </ul>
+
+            <aside class="notes">
+              You can also use our web services API in desktop apps, since it's just HTTP requests.<br />
+              Currently, the only way to incorporate playback into desktop apps is via Applescript.
+            </aside>
+          </section>
+
+          <section data-title="Web Services">
+            <ul>
+              <li>RPC-style API</li>
+              <li>All calls are POST to https://api.rdio.com/1/</li>
+              <li>OAuth 1.0a signing is required for all requests</li>
+              <li>More details at <a href="http://www.rdio.com/developers/">http://www.rdio.com/developers/</a></li>
+            </ul>
+
+            <aside class="notes">
+              Our Web Services API is pretty straight forward.<br />
+              RPC over HTTP, not REST.<br />
+              No routes/resource URIs to deal with<br />
+              JSON (or XML if you're feeling masochistic)<br />
+              We provide libraries to handle the OAuth stuff for you<br />
+            </aside>
+          </section>
+        </section>
+
+        <section data-title="Method documentation">
+          <h3>Our web service methods are pretty thorough</h3>
+          <p>Check them out at <a href="http://www.rdio.com/developers/docs/web-service/methods/">http://www.rdio.com/developers/docs/web-service/methods/</a></p>
+        </section>
+
+        <section data-state="chapter">
+          <h1>Let's talk about JavaScript</h1>
+
+          <aside class="notes">
+            <p>Because moving lets us have client-side apps!</p>
+            <p>Host apps for free using github pages</p>
+          </aside>
+        </section>
+
+        <section data-title="Using the (beta) JS API">
+          <pre><code>
+&lt;!-- Include our API on your page --&gt;
+&lt;script src="http://www.rdio.com/api/api.js?helper=helper.html
+&amp;client_id=YOUR_CLIENT_ID"&gt;&lt;/script&gt;
+
+&lt;script type="text/javascript"&gt;
+  R.ready(function() {
+    console.log("I get printed when Rdio's ready");
+  });
+&lt;/script&gt;
+          </code></pre>
+        </section>
+
+        <section data-title="The Helper file">
+        <p>helper.html</p>
+          <pre><code>
+&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8" /&gt;
+  &lt;title>Rdio JS API helper&lt;/title&gt;
+  &lt;script type="text/javascript" src="https://www.rdio.com/media/fresh/now/api-helper.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+          </code></pre>
+        </section>
+
+        <section id="slide-some-examples" data-title="Some (beta) JS API Examples">
+          <button id="js-example-charts-btn">Top Charts</button>
+          <button id="js-example-auth-btn">Authentication</button>
+          <button id="js-example-events-btn">Events</button>
+          <button id="js-example-search-btn">Search</button>
+          <pre><code id="js-example-code" contenteditable>
+          </code></pre>
+          <pre><code id="js-example-output" contenteditable></code></pre>
+
+          <aside class="notes">
+          <!-- add a console log style DIV here -->
+            <p>Explain that the button is just running eval.</p>
+            <code>var current = R.player.playingTrack();
+alert(current.get('name') + " - " + current.get('artist'));</code>
+            <code>R.player.pause();</code>
+            <p>All you need to authenticate is to wrap your call in an authenticate!</p>
+          </aside>
+        </section>
+
+        <section data-title="(beta) JS API">
+          <h2>In the Wild...</h2>
+          <ul>
+            <li><a href="http://resp.in/queue/" target="_blank">Respin</a></li>
+            <li><a href="http://eavesdrop.io/" target="_blank">Eavesdrop.io</a></li>
+            <li><a href="http://letsfathom.com/" target="_blank">Fathom</a></li>
+            <li><a href="http://rdioart.appspot.com/" target="_blank">Rdio Art Slide Puzzle</a></li>
+          </ul>
+        </section>
+
+        <section data-title="Documentation & Support">
+          <h3><a href="http://www.rdio.com/developers/">http://www.rdio.com/developers/</a></h3>
+          <h3>#rdio or #musichackday on irc.freenode.net</h3>
+        </section>
+
+        <section data-title="Prize!">
+          <h2>Best use of Rdio API</h2>
+          <h3>1 Year of Rdio Unlimited</h3>
+          <h4>for every team member</h4>
+        </section>
+
+        <section data-state="chapter">
+          <h1>Any questions?</h1>
+        </section>
+
+			</div>
+
+      <footer>
+        &copy; 2014 Rdio, Inc.  All rights reserved.
+      </footer>
+
+		</div>
+
+
+		<script src="reveal/lib/js/head.min.js"></script>
+		<script src="reveal/js/reveal.min.js"></script>
+
+    <!-- JS API Example scripts -->
+    <script id="js-charts-example-code" type="text/x-js-template">R.ready(function() {
+  R.request({
+    method: 'getTopCharts',
+    content: { type: 'tracks', count: 1 },
+    success: function(response) {
+      var name = response.result[0].name;
+      var artist = response.result[0].artist;
+      console.log('Now Playing: ' + name  + ' by ' + artist);
+      R.player.play({source: response.result[0].key});
+    }
+  });
+});</script>
+    <script id="js-auth-example-code" type="text/x-js-template">R.ready(function() {
+  R.authenticate(function(success) {
+    if (success) {
+      console.log('We logged in as ' + R.currentUser.get('vanityName'));
+      R.request({
+        method: 'getTopCharts',
+        content: { type: 'tracks', count: 1 },
+        success: function(response) {
+          var name = response.result[0].name;
+          var artist = response.result[0].artist;
+          console.log('Now Playing: ' + name  + ' by ' + artist);
+          R.player.play({source: response.result[0].key});
+        }
+      });
+    }
+  });
+});</script>
+    <script id="js-search-example-code" type="text/x-js-template">R.ready(function() {
+  R.request({
+    method: 'search',
+    content: { query: "sing what scares you", types: 'Album' },
+    success: function(response) {
+      var result = response.result.results[0];
+      var name = result.name;
+      var artist = result.artist;
+      console.log('Now Playing: ' + name  + ' by ' + artist);
+      R.player.play({source: result.key});
+    }
+  });
+});</script>
+    <script id="js-events-example-code" type="text/x-js-template">R.ready(function() {
+  R.player.on('change:playingTrack', function(val) {
+    var track = val.get('name');
+    var artist = val.get('artist');
+    var album = val.get('album');
+    console.log('Now Playing: "' + track + '" - ' + artist + ' (' + album + ')');
+  });
+  console.log("Ok. Now we're listening!");
+});</script>
+
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: false,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'reveal/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'reveal/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+      // Slide titles
+      var showSlideHeader = function(current) {
+        var headers = document.getElementsByTagName('header') || [];
+        var header = headers[0];
+
+        if (header) {
+          var title = current.dataset.title;
+          if (title !== undefined) {
+            header.innerHTML = title;
+            header.style.display = null;
+          } else {
+            header.style.display = 'none';
+          }
+        }
+      };
+
+      Reveal.addEventListener('ready', function(e) {
+        showSlideHeader(e.currentSlide);
+      });
+
+      Reveal.addEventListener('slidechanged', function(e) {
+        showSlideHeader(e.currentSlide);
+      });
+
+      /* Custom Rdio listener for JS API Examples */
+      Reveal.addEventListener('slidechanged', (function() {
+        var originalConsole = window.console;
+
+        var codeElement = document.getElementById('js-example-code');
+
+        var runExample = function() {
+          var code = codeElement.textContent || codeElement.innerText;
+          eval(code);
+          hljs.highlightBlock(codeElement);
+        };
+
+        codeElement.onkeydown = function(e) {
+          if (e.ctrlKey && e.keyCode == 13) {
+            //ctrl enter
+            runExample();
+            return false;
+          };
+        };
+
+        var chartsExample = document.getElementById('js-charts-example-code').innerHTML;
+        var authExample = document.getElementById('js-auth-example-code').innerHTML;
+        var searchExample = document.getElementById('js-search-example-code').innerHTML;
+        var eventsExample = document.getElementById('js-events-example-code').innerHTML;
+
+        document.getElementById('js-example-charts-btn').onclick = function() {
+          codeElement.innerHTML = chartsExample;
+          hljs.highlightBlock(codeElement);
+        };
+        document.getElementById('js-example-auth-btn').onclick = function() {
+          codeElement.innerHTML = authExample;
+          hljs.highlightBlock(codeElement);
+        };
+        document.getElementById('js-example-events-btn').onclick = function() {
+          codeElement.innerHTML = eventsExample;
+          hljs.highlightBlock(codeElement);
+        };
+        document.getElementById('js-example-search-btn').onclick = function() {
+          codeElement.innerHTML = searchExample;
+          hljs.highlightBlock(codeElement);
+        };
+
+        var logEl = document.getElementById('js-example-output');
+        var divConsole = {
+          log: function() {
+            var args = Array.prototype.slice.call(arguments);
+            logEl.innerHTML = args.join('\n');
+          },
+          error: function() {
+            var args = Array.prototype.slice.call(arguments);
+            logEl.innerHTML = "Error: ";
+            logEl.innerHTML += args.join('\n');
+          }
+        };
+
+        var eventHandler = function(e) {
+          if (e.currentSlide.id == 'slide-some-examples') {
+            codeElement.innerHTML = chartsExample;
+            hljs.highlightBlock(codeElement);
+            window.console = divConsole;
+          } else {
+            window.console = originalConsole;
+          }
+        };
+
+        return eventHandler;
+      })());
+		</script>
+
+	</body>
+</html>
