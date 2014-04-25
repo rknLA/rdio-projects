@@ -1,0 +1,49 @@
+body {
+  font-family: "Lucinda Grande", sans-serif;
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+
+/* Custom container */
+.container-narrow {
+  margin: 0 auto;
+  max-width: 800px;
+}
+.container-narrow > hr {
+  margin: 20px 0px 0px 0px;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  margin: 60px 0;
+  text-align: center;
+}
+.jumbotron h1 {
+  font-size: 72px;
+  line-height: 1;
+}
+.jumbotron .btn {
+  font-size: 21px;
+  padding: 14px 24px;
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 20px 0px;
+}
+
+/* custom replaylist stuff */
+.avatar-image {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+}
+
+.playlist_search_input {
+  width: 70%;
+}
+.playlist_search_button {
+  width: 25%;
+}
+
+

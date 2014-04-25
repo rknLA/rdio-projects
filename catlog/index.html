@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Cat Log</title>
+
+  <link rel="stylesheet" href="../shared/bootstrap/css/bootstrap.css" media="screen" />
+  <link rel="stylesheet" href="css/main.css" media="screen" />
+  <link rel="stylesheet" href="../shared/bootstrap/css/bootstrap-responsive.css" media="screen" />
+
+  <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.rc.1/handlebars.min.js"></script>
+  <!-- rdio localhost
+  <script src="http://rdio.localhost:8000/api/api.js?helper=helper.html&client_id=CLIENT_ID"></script>
+  -->
+  <!-- rdio.com
+  -->
+  <script src="https://www.rdio.com/api/api.js?helper=helper.html&client_id=FJwYJO3_9vGjJ53Na_ZV9w"></script>
+
+  <script src="js/main.js"></script>
+  <script src="../shared/js/rdio-tools.js"></script>
+  <script src="js/catlog.js"></script>
+
+  <script id="authTemplate" type="text/x-handlebars-template">
+    <div class="avatar">
+      <img src="{{avatarUrl}}" class="avatar-image" />
+      <span>{{userName}}</span>
+    </div>
+  </script>
+
+  <script id="labelSearchTemplate" type="text/x-handlebars-template">
+    <form>
+      <label for="label_url">Enter a URL for a Label here:</label>
+      <input type="text" name="label_url" class="label_search_input"></input>
+      <button class="label_search_button">Search!</button>
+    </form>
+    <div class="clone-results"></div>
+  </script>
+
+  <script id="playlistTemplate" type="text/x-handlebars-template">
+    <div class="playlist-metadata">
+      <p>
+        <span class="playlist-name">{{name}}</span>
+        by
+        <span class="playlist-owner">{{owner}}</span>
+      </p>
+      <p><img src="{{icon}}" alt="playlist icon"/></p>
+      <p>
+        <span class="playlist-track-count">{{length}}</span>
+        Tracks
+      </p>
+    </div>
+    <div class="clone">
+      Clone into
+      <select class="playlist-destination-selector" name="playlist-destination">
+        <option name="new" value="new">New Playlist</option>
+      </select>
+      <button class="clone_playlist">Go!</button>
+    </div>
+    <div class="playlist-tracks">
+      <ol>
+      </ol>
+    </div>
+  </script>
+
+  <script id="playlistTrackTemplate" type="text/x-handlebars-template">
+    <li>
+    {{name}} - {{artist}} ({{album}}) {{duration}}
+    </li>
+  </script>
+
+  <script id="playlistDestinationItemTemplate" type="text/x-handlebars-template">
+    <option class="existing_playlist" value="{{key}}" data-r-playlist-length="{{length}}">{{name}}</option>
+  </script>
+
+</head>
+
+<body>
+  <div class="container-narrow">
+    <div class="masthead">
+      <ul class="nav nav-pills pull-right">
+        <li><section data-r-auth="userBadge"></section></li>
+      </ul>
+    </div>
+    <h3 class="muted">Cat Log</h3>
+
+    <hr />
+
+    <div class="row-fluid marketing">
+      <div class="span12">
+        <p>Some people <em>really</em> like certain record labels.  Some people even <em>are</em> record labels.  Cat Log makes it easy for those people to add a record label's entire catalog to their <a href="http://www.rdio.com/">Rdio</a> collection in one fell swoop.</p>
+      </div>
+    </div>
+
+    <div class="row-fluid">
+      <section class="ui">
+      Put a form for source label here.
+
+      Also put the clone and save buttons here.
+      </section>
+    </div>
+
+    <div class="row-fluid">
+      <section class="sourceLabel">
+      Render the label info here.
+      </section>
+    </div>
+  </div>
+
+</body>
+</html>
