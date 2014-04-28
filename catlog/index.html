@@ -10,6 +10,7 @@
 
   <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.rc.1/handlebars.min.js"></script>
+  <script src="../shared/js/underscore-min.js"></script>
   <!-- rdio localhost
   <script src="http://rdio.localhost:8000/api/api.js?helper=helper.html&client_id=CLIENT_ID"></script>
   -->
@@ -37,29 +38,29 @@
     <div class="clone-results"></div>
   </script>
 
-  <script id="playlistTemplate" type="text/x-handlebars-template">
-    <div class="playlist-metadata">
+  <script id ="labelInfoTemplate" type="text/x-handlebars-template">
+    <div class="label-metadata">
+      <p><img src="{{icon}}" width="50px" height="50px" alt="label icon"/></p>
+      <p><span class="label-name">{{name}}</span></p>
+    </div>
+    <div class="label-album-count">
+      <p>{{albumCount}} albums</p>
+    </div>
+    <button class="add_albums_button">Add them all to your Collection!</button>
+  </script>
+
+  <script id="albumTemplate" type="text/x-handlebars-template">
+    <div class="album-metadata">
       <p>
-        <span class="playlist-name">{{name}}</span>
+        <span class="album-name">{{name}}</span>
         by
-        <span class="playlist-owner">{{owner}}</span>
+        <span class="artist-name">{{artist}}</span>
       </p>
-      <p><img src="{{icon}}" alt="playlist icon"/></p>
+      <p><img src="{{icon}}" alt="album icon"/></p>
       <p>
-        <span class="playlist-track-count">{{length}}</span>
+        <span class="album-track-count">{{length}}</span>
         Tracks
       </p>
-    </div>
-    <div class="clone">
-      Clone into
-      <select class="playlist-destination-selector" name="playlist-destination">
-        <option name="new" value="new">New Playlist</option>
-      </select>
-      <button class="clone_playlist">Go!</button>
-    </div>
-    <div class="playlist-tracks">
-      <ol>
-      </ol>
     </div>
   </script>
 
@@ -87,7 +88,11 @@
     <hr />
 
     <div class="row-fluid marketing">
-      <div class="span12">
+      <div class="span3">
+        <img src="img/catlog.jpg"/>
+        <span class="caption">It's a cat. On a log.<br />Original by <a href="http://lovemeow.com/2010/04/russi-the-cat-boss-in-the-house/">Jenna Johanna</a>
+      </div>
+      <div class="span9">
         <p>Some people <em>really</em> like certain record labels.  Some people even <em>are</em> record labels.  Cat Log makes it easy for those people to add a record label's entire catalog to their <a href="http://www.rdio.com/">Rdio</a> collection in one fell swoop.</p>
       </div>
     </div>
