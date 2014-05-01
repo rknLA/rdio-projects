@@ -1,31 +1,10 @@
 /*globals R, $, CatLog */
 (function()  {
-
-  CatLog.currentPlaylist = null;
-
-  CatLog.userPlaylists = [];
-
   CatLog.onAuthenticated = function() {
     console.log('authentication!');
 
     CatLog.renderForm();
     CatLog.renderLabel();
-
-    R.ready(function() {
-      R.request({
-        method: 'getPlaylists',
-        content: {
-          extras: '-*,name,key,length'
-        },
-        success: function(res) {
-          CatLog.userPlaylists = res.result.owned;
-        },
-        error: function(err) {
-          console.log("failed to grab user playlists");
-          console.log(err);
-        }
-      });
-    });
   };
 
 
