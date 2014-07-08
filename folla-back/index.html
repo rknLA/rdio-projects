@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Folla Back</title>
+
+  <link rel="stylesheet" href="../shared/bootstrap/css/bootstrap.css" media="screen" />
+  <link rel="stylesheet" href="css/main.css" media="screen" />
+  <link rel="stylesheet" href="../shared/bootstrap/css/bootstrap-responsive.css" media="screen" />
+
+  <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.rc.1/handlebars.min.js"></script>
+  <script src="../shared/js/underscore-min.js"></script>
+  <!-- rdio localhost
+  <script src="http://rdio.localhost:8000/api/api.js?helper=helper.html&client_id=CLIENT_ID"></script>
+  -->
+  <!-- rdio.com
+  -->
+  <script src="https://www.rdio.com/api/api.js?helper=helper.html&client_id=JVQh7jyfmB1le6QcgcwGng"></script>
+
+  <script src="js/main.js"></script>
+  <script src="../shared/js/rdio-tools.js"></script>
+  <script src="js/follaback.js"></script>
+
+  <script id="authTemplate" type="text/x-handlebars-template">
+    <div class="avatar">
+      <img src="{{avatarUrl}}" class="avatar-image" />
+      <span>{{userName}}</span>
+    </div>
+  </script>
+
+  <script id="followerTemplate" type="text/x-handlebars-template">
+    <li class="follower">
+      <img src="{{icon}}"> <a href="https://www.rdio.com{{url}}">{{username}}</a>
+    </li>
+  </script>
+
+  <script id="successfulText" type="text/x-handlebars-template">
+    <p class="bg-success">{{followed}} people were followed back!</p>
+  </script>
+
+  <script id="errorText" type="text/x-handlebars-template">
+    <p class="bg-error">{{errors}} people couldn't be followed (you might already follow them!)</p>
+  </script>
+
+
+</head>
+
+<body>
+  <div class="container-narrow">
+    <div class="masthead">
+      <ul class="nav nav-pills pull-right">
+        <li><section data-r-auth="userBadge"></section></li>
+      </ul>
+    </div>
+    <h3 class="muted">Follaback Girl</h3>
+
+    <hr />
+
+    <div class="row-fluid marketing">
+      <div class="span9">
+        <p>This is my shit<br>but actually yes,<br>I <em>am</em> a follaback girl.</p>
+      </div>
+    </div>
+
+    <div class="row-fluid">
+      <section class="ui hidden">
+        <h3>These are the people who follow you:</h3>
+        <button class="follow-button btn btn-success">Follow them all back</button>
+        <ul class="followers">
+        </ul>
+      </section>
+    </div>
+
+  </div>
+
+</body>
+</html>
